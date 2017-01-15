@@ -15,14 +15,14 @@
 <body>
 <div id="login">  
         <h1>Login</h1>  
-        <form action="${base}goLogin"  method="post" id="login">  
+        <form action="${base}goLogin" method="post" >  
           <table border="0">
-             <tr><td colspan="2"><input type="text" required="required" placeholder="用户名" name="name"></input>  </td></tr>
-             <tr><td colspan="2"><input type="password" required="required" placeholder="密码" name="password"></input> </td></tr>
-             <tr><td><button class="but" type="submit">登录</button> </td><td><a href="${base }userController/register">注册</a></td></tr>
+             <tr><td colspan="2"><input type="text" required="required" placeholder="用户名" name="name"  data-rule="required;true"></input>  </td></tr>
+             <tr><td colspan="2"><input type="password" required="required" placeholder="密码" name="password"  data-rule="required;true"></input> </td></tr>
+             <tr><td><button class="but" type="submit">登录</button> </td><td><a href="${base}userController/register">注册</a></td></tr>
           </table>
         </form>  
-        <span>${msg }</span>
+        <span > <font color="red">${msg}</font> </span>
     </div>  
 </body>
 </html>
