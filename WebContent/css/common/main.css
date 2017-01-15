@@ -1,0 +1,191 @@
+/*瀛椾綋*/
+*,p{
+	font-family: Microsoft YaHei;
+	 margin:0px;
+	 padding:0px;
+}
+/*绗竴灞俰frame鐨勭晫闈㈣竟璺�*/
+.container-if1 {
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: 5px;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+/*绗簩灞俰frame鐨勭晫闈㈣竟璺�*/
+.container-if2 {
+	padding-top: 5px;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+/* 琛ㄥ崟杈撳叆妗� */
+.form-control {
+	height: 33px;
+	padding: 6px 6px;
+	display: inline;
+	width: 120px;
+}
+
+.panel-body {
+	padding: 0px;
+}
+
+.btn-default {
+	padding: 4px 12px;
+}
+
+/*鏀剁储妗�*/
+.search-panel {
+	margin: 3px 5px;
+}
+
+/*椤甸潰澶撮儴鏍峰紡start*/
+.headDiv {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	padding: 0px 0px 0px 0px;
+}
+/*椤甸潰澶撮儴鏍峰紡end*/
+
+/*鏁版嵁琛ㄦ牸鏍峰紡start*/
+.bodyDiv {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	padding: 0px 0px;
+}
+
+.bodyDiv table td ,.fixed-table-body td{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+ 
+.bodyDiv table {
+	table-layout: fixed;
+}
+
+.tableDiv table {
+	table-layout: fixed;
+}
+/*鏁版嵁琛ㄦ牸鏍峰紡end*/
+
+/*琛ㄥ崟 鏍峰紡 澧炲姞 淇敼 start*/
+.form_table {
+	margin: 0 auto;
+}
+
+.form_table th {
+	font-weight: normal;
+	text-align: right;
+	width: 130px;
+	height: 36px;
+	padding: 3px 0px;
+	white-space: nowrap;
+}
+
+.form_table td {
+	font-weight: normal;
+	text-align: right;
+	 width: 180px;
+	height: 36px;
+	padding: 3px 10px;
+	text-align: left;
+}
+
+.form_table .form-control {
+	width: 100%;
+}
+
+.form_table .form-textarea {
+	height: 60px;
+	line-height: 24px;
+	width: 100%;
+	margin: 2px 0px;
+}
+
+.form_btn {
+	width: 100%;
+	line-height: 36px;
+	text-align: center;
+}
+
+.form-radio {
+	width: 20px;
+}
+/*琛ㄥ崟 鏍峰紡 澧炲姞 淇敼 end*/
+.form-group {
+	display: inline; /* only for IE6&IE7&IE8 */
+}
+
+.n-invalid {
+	border: 1px solid #f00;
+}
+
+.tabHeader {
+	width: 100%;
+	height: 100%;
+	padding: 10px 10px 0px 10px;
+}
+
+.bodyDiv{
+	width: 100%;
+	height: 100%;
+	padding: 0px 10px 0px 10px;
+}
+
+/*鍒嗛〉鏍峰紡淇敼 */
+.fixed-table-pagination .pagination {
+	margin: 0px;
+	margin-top: 5px;
+	padding: 0px;
+}
+
+.fixed-table-pagination  .pagination-detail {
+	margin: 0px;
+	padding-top: 8px;
+}
+
+.pagination {
+	margin: 0px;
+}
+
+/*璇︽儏椤甸潰鏍峰紡*/
+.div_detail {
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+}
+
+.table_detail {
+	width: 100%;
+	height: 100%;
+}
+
+.table_detail th {
+	font-weight: normal;
+	text-align: right;
+	padding-right: 10px;
+	width:150px;
+}
+.table_detail td{
+	width:250px;
+}
+
+.ig_redBorder>div,.ig_redBorder>select{
+	border-color:#f00 !important;
+}
+
+table.reference, table.tecspec {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+.ig_redBorder>select{
+	min-width:75px;
+}

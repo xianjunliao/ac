@@ -1,0 +1,51 @@
+
+.navbar-inverse .brand,.navbar-inverse .nav>li>a {
+	color: #FFFFFF;
+}
+
+#sidebar>ul>li>a {
+	color: #FFFFFF;
+}
+
+#sidebar>ul>li>ul>li>a {
+	text-indent: 2em;
+}
+#sidebar .icon-button{
+	position: absolute;
+	left: 180px;
+    /*height: 100vh;*/
+    background-color: #009FD6;
+    width: 20px;
+    color:#fff;
+    border-top:2px solid #01BCEF;
+}
+#sidebar .icon-button div{
+	position:absolute;
+	top:40%;
+    cursor:pointer;
+}
+.navbar {
+	min-height: 0px;
+}
+
+body {
+	overflow-x:auto;
+	overflow-y:hidden;
+	margin-top:-20px;
+}
+#sidebar>ul ul li a {
+	padding: 10px 0 10px 25px;
+	display: block;
+	color: #FFFFFF;
+}
+ul {list-style: none;}/*去掉在ie8下显示的圆圈*/
+#conten{
+	margin-left: 210px;
+}
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+	background-color: #e8e8e8;
+	background-image: linear-gradient(to bottom,#f5f5f5 0,#e8e8e8 100%);
+}
+ .topLevel{
+ 	background-color:#01BCEF;
+ }

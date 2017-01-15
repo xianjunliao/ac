@@ -1,0 +1,362 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.nsnavbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+}
+.nsnavbar {
+    border-radius: 4px;
+}
+.nsnavbar-static-top {
+    z-index: 1000;
+    border-width: 0 0 1px;
+}
+.nsnavbar-static-top {
+    border-radius: 0;
+}
+.nsnavbar-default {
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+}
+.nsnavbar {
+    margin-bottom: 0;
+}
+.nsnavbar-default {
+    background-color: #3399e5;
+    border-color: #3399e5;
+}
+
+*:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.nsclearfix:before, .nsclearfix:after, .nsdl-horizontal dd:before, .nsdl-horizontal dd:after, .nscontainer:before, .nscontainer:after, .nscontainer-fluid:before, .nscontainer-fluid:after, .nsrow:before, .nsrow:after, .nsform-horizontal .nsform-group:before, .nsform-horizontal .nsform-group:after, .nsbtn-toolbar:before, .nsbtn-toolbar:after, .nsbtn-group-vertical>.nsbtn-group:before, .nsbtn-group-vertical>.nsbtn-group:after, .nsnav:before, .nsnav:after, .nsnavbar:before, .nsnavbar:after, .nsnavbar-header:before, .nsnavbar-header:after, .nsnavbar-collapse:before, .nsnavbar-collapse:after, .nspager:before, .nspager:after, .nspanel-body:before, .nspanel-body:after, .nsmodal-footer:before, .nsmodal-footer:after {
+    display: table;
+    content: " ";
+}
+.nsclearfix:after, .nsdl-horizontal dd:after, .nscontainer:after, .nscontainer-fluid:after, .nsrow:after, .nsform-horizontal .nsform-group:after, .nsbtn-toolbar:after, .nsbtn-group-vertical>.nsbtn-group:after, .nsnav:after, .nsnavbar:after, .nsnavbar-header:after, .nsnavbar-collapse:after, .nspager:after, .nspanel-body:after, .nsmodal-footer:after {
+    clear: both;
+}
+a {
+    text-decoration: none;
+   /* text-align: center;*/
+    cursor: pointer;
+    color: #3399E5;
+}
+a {
+    background-color: transparent;
+}
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+a {
+    color: #333;
+    cursor: pointer;
+}
+.nsnavbar-brand {
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+}
+.nsheader-logo {
+    background: url("../images/logo_white.png") center center no-repeat;
+    /* background-size: contain; */
+    width: 120px;
+    height: 70px;
+}
+/*.nsheader-logo {
+    background-image: url('../../img/logo_BM.png');
+    background-size: 100%;
+    width: 390px;
+    width: 410px\9;
+    background-position: 0 0;
+}*/
+.nsnavbar-default .navbar-brand {
+    color: #777;
+}
+.nspull-right {
+    float: left!important;
+}
+.nsheader-account {
+    height: 70px;
+    line-height: 70px;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.nsnav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.nsnavbar-nav {
+    margin: 7.5px -15px;
+}
+.nsnavbar-nav {
+    float: left;
+    margin: 0;
+}
+
+li {
+    list-style: none outside none;
+}
+.nsdropup, .dropdown {
+    position: relative;
+}
+.nsnav>li {
+    position: relative;
+    display: block;
+}
+.nsnavbar-nav>li {
+    float: left;
+}
+ul.nsnavbar-nav li {
+    float: left;
+}
+
+[role="button"] {
+    cursor: pointer;
+}
+.nsheader-account a {
+    color: #fff;
+}
+.nsheader-account a {
+    /* float: left !important; */
+}
+.nsnav>li>a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+.nsnavbar-nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px;
+}
+.nsnavbar-nav>li>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.nsnavbar-default .nsnavbar-nav>li>a {
+    color: #fff;
+}
+.nsnavbar-default .nsnavbar-nav>li>a {
+    color: #fff;
+    font-size: 16px;
+    height: 70px;
+    line-height: 70px;
+    padding: 0 17px;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft Yahei", "sans-serif","Hiragino Sans GB", "WenQuanYi Micro Hei";
+    font-size: 14px;
+    line-height: 16px;
+    color: #555;
+}
+body {
+    margin: 0;
+}
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+body {
+    font-family: Microsoft Yahei,Hiragino Sans GB,WenQuanYi Micro Hei,sans-serif;
+    font-size: 14px;
+}
+
+.nsbtn {
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 0 3px 0 0;
+    font-family: "Microsoft Yahei", "sans-serif","Hiragino Sans GB", "WenQuanYi Micro Hei";
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    border: 0 none;
+    -webkit-appearance: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.nsbtn-outline {
+    border: 1px solid #fff;
+    color: #fff;
+}
+.nsbtn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.nsbtn {
+    border-radius: 0;
+}
+.nsbtn-outline {
+    border: 1px solid #fff;
+    color: #fff;
+}
+.nsheader-account a {
+    color: #fff;
+}
+
+.nsbtn-outline:hover, .nsbtn-outline:focus {
+    border: 1px solid #5acd70;
+    color: #fff;
+    background-color: #5acd70;
+}
+.nsbtn:hover, .nsbtn:focus, .nsbtn.focus {
+    color: #333;
+    text-decoration: none;
+}
+.nsheader-account a:hover {
+    color: #eee;
+}
+body {
+	overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.nsheader-logo {
+	background-image: url('../../img/logo_BM2.png');
+	/* background-size: 100%; */
+	width: 410px;
+	width: 410px\9;
+	background-position: 10px 15px;
+}
+
+.header-account a {
+	/*float:left !important;*/
+	
+}
+
+ul.nsnavbar-nav li {
+	float: left;
+}
+
+.pushi-right i {
+	float: right;
+}
+
+body {
+	background-color: rgb(51, 153, 229);
+}
+/*渚ц竟鏍�*/
+.icon-button {
+	position: absolute;
+	right: 0;
+	top: 0px;
+	color: #fff;
+	padding: 13px 5px;
+    cursor: pointer;
+}
+
+#sidebar {
+	position: relative;
+	float: left;
+	width: 180px;
+}
+
+#sidebar a {
+	display: block;
+	/*background-color: #01BCEF;*/
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+}
+
+#sidebar a:hover {
+	background-color: #01BCEF;
+}
+
+#sidebar a:hover, #sidebar a:focus, #header-nav a:hover, #header-nav a:focus
+	{
+	text-decoration: none;
+}
+
+#leftMenu>li>a {
+	text-align: left;
+}
+
+#leftMenu>li.active>a {
+	background-color: rgb(5, 141, 224);
+}
+
+#leftMenu .active>ul a.active {
+	background-color: #01BCEF;
+}
+
+#leftMenu>li:first-child>a {
+	border-top-right-radius: 5px;
+}
+#content{
+	background-color:#fff;
+	border-radius:5px;
+}
+
+#leftMenu>li:last-child>a {
+	border-bottom-right-radius: 5px;
+}
+
+.submenu>a>span {
+	/*float:right;*/
+	margin: 0 5px;
+}
+
+#leftMenu>li ul {
+	transition: all 1s ease-in;
+	display: none;
+}
+
+#leftMenu>li ul {
+	transition: display 1s ease-in;
+}
+
+#leftMenu>li.open ul {
+	display: block;
+}
+
+#header-nav li.active>a {
+	background-color: rgb(5, 141, 224);
+}
+#leftMenu>li>ul>li a {
+    text-indent: 3em;
+}

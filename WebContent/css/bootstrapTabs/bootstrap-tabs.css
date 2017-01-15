@@ -1,0 +1,35 @@
+.nav-tabs>li.active {
+	/*border-bottom: 1px solid rgb(0, 163, 214);*/
+	
+}
+
+.nav-tabs>li.active {
+	/*transition:all 1s ease-out;*/
+	
+}
+
+.tab-content {
+	/*margin-top:10px;*/
+	
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover
+	{
+	/*border:none;*/
+	
+}
+
+.nav-tabs>li>a {
+	/*cursor:normal;*/
+	
+}
+
+.nav-tabs {
+	/*border-bottom:none;*/
+	
+}
+
+.closeBtn {
+	cursor: pointer;
+	font-size: 12px;
+}

@@ -1,0 +1,321 @@
+* {
+	font-family: Microsoft YaHei;
+}
+
+ol, ul {
+	margin: 0;
+	padding: 0;
+}
+
+a, a:hover, a:focus {
+	text-decoration: none;
+}
+
+body {
+	
+}
+
+.head-logo {
+	background-color: #fff;
+}
+
+.logo {
+	background: url('./imgs/newlogo.png');
+	display: inline-block;
+	width: 487px;
+	height: 64px;
+	margin-left: 40px;
+}
+
+.infoRight {
+	float: right;
+}
+
+.infoRight a {
+	color: #007FCC;
+	/*font-weight: 600;*/
+}
+
+.infoRight>div {
+	display: inline-block;
+}
+
+.addonfix {
+	background-color: #0080cc;
+	border-color: #0080cc;
+	color: #fff;
+}
+
+.info {
+	vertical-align: top;
+	margin-top: 27px;
+	font-size: 15px;
+	line-height: 15px;
+}
+
+.icon {
+	background: url('./imgs/icons.png') no-repeat;
+}
+
+.mail {
+	background-position: -3px -3px;
+	width: 20px;
+	height: 15px;
+	display: inline-block;
+	margin-bottom: -2px;
+	position: relative;
+}
+
+.count {
+	position: absolute;
+	top: -10px;
+	left: -10px;
+	padding: 2px 6px;
+	border-radius: 10px;
+	background: #86c747;
+	font-style: normal;
+	color: #fff;
+	font-size: 12px;
+}
+
+.headicon {
+	background-position: -3px -21px;
+	width: 20px;
+	height: 18px;
+	display: inline-block;
+	margin-bottom: -4px;
+}
+
+.triangle {
+	background-position: -3px -41px;
+	width: 20px;
+	height: 13px;
+	display: inline-block;
+	margin-bottom: -4px;
+}
+
+.receiveInfo {
+	margin-right: 27px;
+}
+
+.username {
+	margin-right: 20px;
+}
+
+.liner {
+	position: absolute;
+	font-size: 14px;
+}
+
+.serverSelf {
+	padding: 1px 15px;
+	background: #86c747;
+	border-radius: 15px;
+	color: #fff;
+}
+
+.leftMenu {
+	background: #0080cc;
+	width: 180px;
+}
+
+.menuHeader {
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	font-size: 16px;
+	padding-left: 20px;
+	background-color: #01629c;
+}
+
+.menu li {
+	list-style: none;
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	padding-left: 50px;
+	position: relative;
+}
+
+.menu li.active {
+	background-color: #0078bd;
+}
+
+.menu li.active::before {
+	content: "";
+	display: inline-block;
+	width: 5px;
+	height: 100%;
+	background: #86c747;
+	position: absolute;
+	left: 0;
+}
+
+.navHeader {
+	background: #fff;
+	padding: 20px;
+	position: relative;
+}
+
+.header-navlist li {
+	list-style: none;
+	float: left;
+	width: 180px;
+	position: relative;
+	text-align: center;
+	border-right: 1px solid #fff;
+}
+
+.header-navlist li.active {
+	background: #86c747;
+}
+
+.header-navlist li.active::before {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	width: 0;
+	height: 0;
+	bottom: -10px;
+	left: 80px;
+	vertical-align: middle;
+	border-top: 10px dashed #86c747;
+	border-top: 4px solid #86c747\9;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+}
+
+.header-nav {
+	background-color: #0080cc;
+	height: 50px;
+	line-height: 50px;
+	color: #fff;
+}
+
+.content {
+	margin: 0;
+	padding: 0;
+	margin-top: 20px;
+	overflow: hidden;
+	background: #fff;
+	float: left;
+}
+
+.mr20 {
+	margin-right: 20px;
+}
+
+.allContent {
+	width: 100%;
+}
+
+.header-navlist li {
+	cursor: pointer;
+}
+
+iframe {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+.shadeWrap {
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 999999;
+	cursor: not-allowed;
+}
+
+.charts {
+	/* float: left; */
+}
+
+.header {
+	height: 40px;
+	line-height: 50px;
+	color: #589ed7;
+	font-size: 18px;
+	position: relative;
+}
+
+.header>span::before {
+	content: "";
+	display: inline-block;
+	width: 5px;
+	height: 22px;
+	top: 15px;
+	left: 20px;
+	background-color: #86c747;
+	position: absolute;
+	margin-right: 10px;
+}
+
+.header>span {
+	margin-left: 30px;
+}
+
+a, a:hover, a:focus {
+	text-decoration: none;
+}
+
+.quiteTime a {
+	color: #000;
+}
+
+.quiteTime {
+	padding-left: 30px;
+	margin-bottom:5px;
+}
+
+.quiteTime a {
+	margin-right: 40px;
+}
+
+.quiteTime a.active {
+	background: #86c747;
+	color: #fff;
+	padding: 3px 10px;
+	border-radius: 15px;
+	margin-right: 20px;
+	margin-left: -10px;
+}
+
+.searchBtn {
+	cursor: pointer;
+	width: 50px;
+	height: 25px;
+	background: #0080cc;
+	color: #fff;
+	line-height: 25px;
+	text-align: center;
+}
+
+th {
+	font-weight: normal;
+	background: #0080cc;
+	color: #fff;
+}
+
+.fixed-table-header {
+	background: #0080cc;
+}
+
+.bootstrap-table .table>thead>tr>th {
+	border-bottom: none;
+}
+
+.fixed-table-container thead th {
+	border-left-color: #59a9d8;
+}
+input.Wdate{
+	border:1px solid #ccc;
+	border-radius:4px;
+}
+#view{
+	width:100%;
+	height:100%;
+}

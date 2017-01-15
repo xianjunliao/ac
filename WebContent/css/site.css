@@ -1,0 +1,46 @@
+div.menu ul
+{
+    list-style:none; 
+    margin: 0px; 
+    padding: 0px; 
+    width:800px; 
+}
+div.menu ul li
+{
+    float:left;
+}
+div.menu ul li a, div.menu ul li a:visited
+{
+    background-color: #01BCEF;
+    border:1px solid #16d3e2;
+    color: #FFF;
+    display: block; 
+    line-height: 23px; 
+    padding: 4px 8px; 
+    text-decoration: none; 
+    white-space: nowrap; 
+    height:35px;
+    border-radius:6px 6px 0px 0px;
+    margin-right: 2px;
+    float:left;
+}
+div.menu ul li a:hover
+{
+    background-color: #00A3D6; 
+    color: #ffffff; 
+    text-decoration: none;
+}
+div.menu ul li a:active
+{
+    background-color: #01BCEF; 
+    color: #ffffff; 
+    text-decoration: none; 
+}
+.avist{
+	
+	background-color: #00A3D6; 
+}
+.ade{
+	background-color: #236FCC; 
+}
+

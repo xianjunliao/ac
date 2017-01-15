@@ -1,0 +1,67 @@
+span.fordericon ,strong.fordericon ,.pageicon span{
+	background:url('tree_icons.png') no-repeat;
+	display: inline-block;
+}
+span.fordericon {
+	background-position:1px 0px;	
+	width:15px;
+	height:15px;
+}
+strong.fordericon {
+	background-position:-208px -3px;
+	width:16px;
+	height:12px;
+	margin:0 5px;
+}
+span.fordericon.opended {
+	background-position:-15px 0px;	
+	width:15px;
+	height:15px;
+}
+strong.fordericon.opended {
+	background-position:-224px -3px;
+	width:16px;
+	height:12px;
+	margin:0 5px;
+}
+.pageicon span{
+	background-position:-240px 0px;
+	width:16px;
+	height:18px;
+	vertical-align: top;
+	margin-left: 30px;
+}
+.table  td .fix-pdl{
+	padding-left: 20px;
+}
+#table a{
+	text-decoration: none;
+}
+#table tr,#table td{
+   height:37px;
+   vertical-align:middle;
+} 
+#tree_left_table{
+	float: left;
+	display: inline-block;
+	padding-right: 310px;
+}
+#tree_right_table{
+	display: inline-block;
+	float:right;width:300px;
+	margin-left:-300px;
+	overflow-y:auto;
+}
+#tree_right_table .btn-head{
+	margin:0px 0 0px 0px;
+	border:1px solid #ddd;
+	padding-bottom:10px;
+	padding-top:10px;
+	border-bottom:none;
+}
+#tree_left_table .menu a,#tree_left_table .submenu a{
+	cursor:pointer;
+}
+.menu{
+	height:37px!import;
+}

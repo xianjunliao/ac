@@ -1,0 +1,251 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/* op data show index add css start  */
+#showContent{
+	width:1200px;
+	margin:0 auto;
+}
+.showContent{
+	margin-top:20px!important;
+	display:none;
+}
+.chart{
+	 margin-top:20px!important; 
+}
+.colored{
+	background-color:#0085d0;
+	color:#fff!important;
+}
+.showed{
+	display:block;
+}
+.color{
+	color:#ff1e6d!important;
+	font-weight:bold;
+}
+/* 分省地理位置筛选 */
+#form1{
+	position:absolute;
+	left:230px;
+	top:35px;
+	height:25px;
+}
+/* op data show index add css start */
+.nsnavbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+}
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    color:#a2a2a2;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid\9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+.nsnavbar {
+    border-radius: 4px;
+}
+.clearfix:after{display:block;clear:both;content:"";visibility:hidden;height:0;} 
+.nsnavbar-default {
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+}
+.nsnavbar {
+    margin-bottom: 0;
+}
+.nsnavbar-default {
+    border-bottom:5px solid #0085d0;
+}
+
+*:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+a:hover{
+	text-decoration:none;
+}
+a {
+    color: #151515;
+    text-decoration: none;
+    cursor: pointer;
+}
+.nsnavbar-brand {
+    float: left;
+    
+}
+.nsheader-logo {
+    background: url("../../img/logo.png") center center no-repeat;
+    width:230px;
+    margin-top:15px;
+    height: 65px;
+}
+#nsheader{
+	background-color:#fff;
+}
+.nsnavbar-default .navbar-brand {
+    color: #777;
+}
+.nspull-right {
+    float: left!important;
+}
+.nsheader-account {
+    height: 70px;
+    line-height: 70px;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+ul, ol {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.nsnav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.nsnavbar-nav {
+    margin: 7.5px -15px;
+}
+.nsnavbar-nav {
+    float: left;
+    margin: 0;
+}
+li {
+    list-style: none outside none;
+}
+.nsnav>li {
+    position: relative;
+    display: block;
+}
+.nsnavbar-nav>li {
+    float: left;
+}
+ul.nsnavbar-nav li {
+    float: left;
+}
+
+[role="button"] {
+    cursor: pointer;
+}
+.nsheader-account a {
+    color: #fff;
+}
+.nsnav>li>a {
+    position: relative;
+    display: block;
+}
+.nsnavbar-default .nsnavbar-nav>li>a {
+    color: #333;
+    width:120px;
+    font-size: 18px;
+    font-weight:bold;
+    /* height: 95px; */
+    line-height: 95px;
+    text-align:center;
+}
+
+body {
+	margin:0;
+	padding:0;
+	font-family: Microsoft Yahei,Hiragino Sans GB,WenQuanYi Micro Hei,sans-serif;
+    line-height:16px;
+    color: #333;
+    background-color: #fff;
+}
+.nsheader-account a {
+    color: #fff;
+}
+.nsheader-account a:hover {
+    color: #eee;
+}
+
+ul.nsnavbar-nav li {
+	float: left;
+}
+/* showMenue css */
+.menuemain{
+	width:1200px;
+	margin:0px auto;
+}
+#menuebar-header{
+	height:80px;
+	position:relative;	
+	background-color:#C6E18F;
+}
+ul.smnavbar-ul li{
+	float:left;
+	height:80px;
+}
+#menuebar-header:after{
+	content: '';
+	position: absolute;
+	top: 100%;
+	left: 55px;
+	width: 0;
+	height: 0;
+	border:10px solid transparent;
+	border-top:15px solid #C6E18F;
+}
+.sleftmenue li>a{
+	display:block;
+	width:100%;
+	font-size:16px;
+	line-height:35px;
+	padding-left:25px;
+}
+.sleftmenue li>a:hover{
+	color:#ff1e6d;
+}
+.sleftmenue li ul{
+	transition: all 1s ease-in;
+	border:0;
+	margin:0;
+	border-radius:0;
+	background-color:#EBEBEB;
+	width:280px;
+}
+ .sleftmenue li >ul{
+	transition: all 2s ease-in;
+	display:none;
+} 
+.sleftmenue li ul li a{
+	font-size:14px;
+	padding-left:40px;
+	
+}
+
+.sleftmenue li ul li a:hover{
+	color:#ff1e6d;
+	text-decoration:none;
+	background-color:transparent;
+}
+/* .sleftmenue li ul li a:visited{
+	color:#ff1e6d;
+	text-decoration:none;
+	background-color:transparent;
+} */
+ul.smnavbar-ul li a{
+	padding:0px 20px; 
+	line-height:80px;
+}
+/* get #menuebar-header click event */
+.menue-l{
+	width:280px;
+	float:left;
+	background-color:#C6E18F;
+	padding:10px 0px;
+}

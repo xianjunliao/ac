@@ -1,0 +1,81 @@
+/*	.banner{
+		background: url("./logo.png") no-repeat;
+		background-position: 60px 20px;
+		width:100%;
+		height:120px;
+		background-color: #CFDFFF;
+	}*/
+	/*.info{
+			    background-color: #fff;
+    box-shadow: #000 0 0 5px;
+    padding: 0px 10px 5px;
+    position:relative;
+    float: right;
+    margin-right: 35px;
+	}*/
+	.share-tabs{
+		    margin-top: 10px;
+    padding: 10px;
+	}
+	.shareContent>p{
+		margin-bottom:0;
+		padding-left:10px;
+		text-indent:2em;
+	}
+		.sharepage{
+		/*width:60%;*/
+		/*margin-left:240px;*/
+		/*margin-right:300px;*/
+		padding:10px 30px;
+		box-shadow: #ddd 0 0 30px;
+    	padding-bottom: 25px;
+    	    border-radius: 10px;
+	}
+	.shareContent_req{
+		    margin-top: 10px;
+    /* padding-bottom: 20px; */
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    margin-left: 70px;
+    clear:both;
+	}
+	.through{
+		color: #FF5840;
+	}
+	.through>i{
+		
+		    border: 1px solid #FF5840;
+	}
+	a.title {
+		font-size:18px;
+	}
+	.scran{
+		margin-left:145px;
+	}
+	.auditing{
+		margin-left:30px;
+		color:#a0a0a0;
+		font-size:12px;
+	}
+	.shareContent {
+		margin-bottom:20px;
+		padding-bottom:20px;
+	}
+	.stamp{
+		margin-bottom:20px;
+	}
+			.sys-tabs>.nav-tabs,.sys-tabs>ul.nav-tabs>li.active>a{
+			border:none;
+		}
+		.bottom-line{
+			border-bottom: 2px solid #337ab7;
+			display: inline-block;
+    		width: 60px;
+    		position: absolute;
+    		top: 40px;
+    		left: 0;
+    		transition:all 650ms ease;		
+		}
+		.sys-tabs>.nav-tabs{
+			position:relative;
+		}
