@@ -8,7 +8,6 @@
 <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
 <META HTTP-EQUIV="Expires" CONTENT="0">
-<title>登陆</title>
 <script type="text/javascript">
 	$(function() {
 
@@ -35,7 +34,7 @@
 				if(data==0){
 					$("#msg").text("该用户不存在！");
 				}else if(data==1){
-					window.location.href="${base}bookController/books";
+					window.location.href="${base}book/books";
 				}else if(data==2){
 					$("#msg").text("账户或密码错误！");
 				}else{
@@ -55,7 +54,7 @@
 			<table border="0">
 				<tr>
 					<td colspan="2"><input type="text" required="required"
-						placeholder="用户名" id="name" name="name" data-rule="required;true"></input></td>
+						placeholder="用户名" id="name" name="name" data-rule="required;true" value="${name }"></input></td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="password" required="required"
@@ -64,7 +63,7 @@
 				</tr>
 				<tr>
 					<td><button class="but" id="DL" type="button">登录</button></td>
-					<td><a href="${base}userController/register">注册</a></td>
+					<td><a href="${base}user/register">注册</a></td>
 				</tr>
 			</table>
 		</form>

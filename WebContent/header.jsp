@@ -1,7 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@page import="java.net.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
-
 <%
     String ipAddress = null;   
     ipAddress = request.getHeader("x-forwarded-for");   
@@ -58,7 +59,6 @@
 <script src="${base}js/bootstrapTable/bootstrap-table-fixed-columns.js"></script>
 <script src="${base}js/bootstrapSelect/bootstrap-select.min.js"></script>
 <script src="${base}js/bootstrapSelect/defaults-zh_CN.min.js"></script>
-
 <link rel="stylesheet" href="${base}/js/validator/jquery.validator.css">
 <script type="text/javascript" src="${base}/js/validator/src/jquery.validator.js"></script>
 <script type="text/javascript" src="${base}/js/validator/local/zh-CN.js"></script>
@@ -69,4 +69,6 @@
 
 <script type="text/javascript" src="${base}js/layer/layer.js"></script>
 
+<title>AC：花小钱，记大账 </title>
+<link rel="shortcut icon" href="${base}img/ac_tm_32.ico"/>
 
