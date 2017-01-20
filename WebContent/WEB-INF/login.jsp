@@ -48,7 +48,7 @@
 
 </head>
 <body>
-	<div id="login">
+	<div id="centrer">
 		<h1>Login</h1>
 		<form method="post" id="loginForm">
 			<table border="0">

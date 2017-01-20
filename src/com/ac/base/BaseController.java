@@ -12,11 +12,13 @@ import java.util.Map;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 
+import com.ac.entity.UserEntity;
 import com.ac.util.StringEscapeEditor;
 
 public class BaseController {
@@ -109,16 +111,16 @@ public class BaseController {
 		is.close();
 	}
 	
-//	/**
-//	 * 获取当前用户
-//	 * @author jzc
-//	 * @param request
-//	 * @return
-//	 */
-//	public SysUserEntity getSysUser(HttpServletRequest request){
-//		HttpSession session = request.getSession();
-//		return ((SysUserEntity) session.getAttribute("account"));
-//	}
+	/**
+	 * 获取当前用户
+	 * @author jzc
+	 * @param request
+	 * @return
+	 */
+	public UserEntity getSysUser(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		return ((UserEntity) session.getAttribute("ac"));
+	}
 	
 	
 	/**

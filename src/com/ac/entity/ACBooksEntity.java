@@ -1,36 +1,40 @@
 package com.ac.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+
 import java.util.Date;
+
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
-/**** @time2017-01-15 18:15:57 ****/
+/**** @time2017-01-20 22:03:28 ****/
 
 @Entity
 @Table(name = "AC_BOOKS")
 @DynamicUpdate
-public class AcBooksEntity implements Serializable {
+public class ACBooksEntity implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 7413688485483006711L;
+	private static final long serialVersionUID = 7457567558385252686L;
 
 	@Id
+	@Column(name = "temp_tx_id")
+	private Integer tempTxId;
+
 	@Column(name = "id")
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
 	private Integer id;
-
-	@Column(name = "ac_name")
-	private String acName;
 
 	@Column(name = "ac_month")
 	private String acMonth;
@@ -48,9 +52,6 @@ public class AcBooksEntity implements Serializable {
 	@Column(name = "ac_amount")
 	private Double acAmount;
 
-	@Column(name = "ac_type")
-	private Integer acType;
-
 	@Column(name = "p_ac_id")
 	private Integer pAcId;
 
@@ -60,24 +61,33 @@ public class AcBooksEntity implements Serializable {
 	@Column(name = "ac_date")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date acDate;
+	@Transient
+	private String txName;
 
-	public AcBooksEntity() {
+	public ACBooksEntity() {
 	}
 
-	public AcBooksEntity(Integer id, String acName, String acMonth,
+	public ACBooksEntity(Integer tempTxId, Integer id, String acMonth,
 			Integer acWeek, Integer userId, Date acCreateTime, Double acAmount,
-			Integer acType, Integer pAcId, String acRemark, Date acDate) {
+			Integer pAcId, String acRemark, Date acDate) {
+		this.tempTxId = tempTxId;
 		this.id = id;
-		this.acName = acName;
 		this.acMonth = acMonth;
 		this.acWeek = acWeek;
 		this.userId = userId;
 		this.acCreateTime = acCreateTime;
 		this.acAmount = acAmount;
-		this.acType = acType;
 		this.pAcId = pAcId;
 		this.acRemark = acRemark;
 		this.acDate = acDate;
+	}
+
+	public Integer getTempTxId() {
+		return tempTxId;
+	}
+
+	public void setTempTxId(Integer tempTxId) {
+		this.tempTxId = tempTxId;
 	}
 
 	public Integer getId() {
@@ -86,14 +96,6 @@ public class AcBooksEntity implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getAcName() {
-		return acName;
-	}
-
-	public void setAcName(String acName) {
-		this.acName = acName;
 	}
 
 	public String getAcMonth() {
@@ -136,14 +138,6 @@ public class AcBooksEntity implements Serializable {
 		this.acAmount = acAmount;
 	}
 
-	public Integer getAcType() {
-		return acType;
-	}
-
-	public void setAcType(Integer acType) {
-		this.acType = acType;
-	}
-
 	public Integer getPAcId() {
 		return pAcId;
 	}
@@ -168,12 +162,28 @@ public class AcBooksEntity implements Serializable {
 		this.acDate = acDate;
 	}
 
+	public Integer getpAcId() {
+		return pAcId;
+	}
+
+	public void setpAcId(Integer pAcId) {
+		this.pAcId = pAcId;
+	}
+
+	public String getTxName() {
+		return txName;
+	}
+
+	public void setTxName(String txName) {
+		this.txName = txName;
+	}
+
 	public String toString() {
-		return "AcBooksEntity[id=" + id + ",acName=" + acName + ",acMonth="
+		return "AcBooksEntity[tempTxId=" + tempTxId + ",id=" + id + ",acMonth="
 				+ acMonth + ",acWeek=" + acWeek + ",userId=" + userId
 				+ ",acCreateTime=" + acCreateTime + ",acAmount=" + acAmount
-				+ ",acType=" + acType + ",pAcId=" + pAcId + ",acRemark="
-				+ acRemark + ",acDate=" + acDate + "]";
+				+ ",pAcId=" + pAcId + ",acRemark=" + acRemark + ",acDate="
+				+ acDate + "]";
 	}
 
 }

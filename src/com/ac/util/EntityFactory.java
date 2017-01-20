@@ -186,6 +186,7 @@ public class EntityFactory {
 			bw.newLine();
 			
 			bw.write("@Id");
+			bw.newLine();
 			for (int i = 0; i < list.size(); i++) {
 				//属性
 				String[] detail = list.get(i);
@@ -448,6 +449,6 @@ public class EntityFactory {
 	public static void main(String[] args) {
 		
 		EntityFactory entityFactory=new EntityFactory();
-		entityFactory.produceClass("ac_books","src\\com\\ac\\entity\\", "AcBooks");
+		entityFactory.produceClass("ac_temp","src\\com\\ac\\entity\\", "ACTemp");
 	}
 }

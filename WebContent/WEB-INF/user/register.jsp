@@ -104,7 +104,7 @@
 </script>
 </head>
 <body>
-	<div id="login">
+	<div id="centrer">
 		<h1>Register</h1>
 		<form  method="post" id="regForm">
 			<table border="0">

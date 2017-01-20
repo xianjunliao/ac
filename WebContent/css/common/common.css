@@ -13,7 +13,7 @@ body {
 	background-color: #AFEEEE;
 }
 
-#login {
+#centrer {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -21,8 +21,12 @@ body {
 	width: 300px;
 	height: 300px;
 }
-
-#login h1 {
+#books{
+	position: absolute;
+	top: 10%;
+	left: 10%;
+}
+#centrer h1 {
 	color: #2D2D3F;
 	text-shadow: 0 0 10px;
 	letter-spacing: 1px;
@@ -34,7 +38,23 @@ h1 {
 	margin: 0.67em 0;
 }
 
-input {
+#loginForm input {
+	width: 285px;
+	height: 25px;
+	margin-bottom: 5px;
+	outline: none;
+	padding: 2px;
+	font-size: 13px;
+	color: #fff;
+	text-shadow: 1px 1px 1px;
+	border-top: 1px solid #312E3D;
+	border-left: 1px solid #312E3D;
+	border-right: 1px solid #312E3D;
+	border-bottom: 1px solid #56536A;
+	border-radius: 4px;
+	background-color: #2D2D3F;
+}
+#regForm input {
 	width: 285px;
 	height: 25px;
 	margin-bottom: 5px;

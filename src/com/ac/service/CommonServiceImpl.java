@@ -264,7 +264,7 @@ public class CommonServiceImpl implements CommonService {
 
 	@Override
 	public void updateSeqByName(String seqName, Integer seq) {
-		String hql = "update SysSequencesEntity set code=? where name=?";
+		String hql = "SequenceEntity set currentValue=? where name=?";
 		updateByHql(hql, new Object[] { seq, seqName });
 	}
 
