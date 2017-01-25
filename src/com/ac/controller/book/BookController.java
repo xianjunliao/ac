@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ac.base.BaseController;
 import com.ac.entity.ACBooksEntity;
 import com.ac.entity.ACTempEntity;
-import com.ac.entity.SequenceEntity;
+//import com.ac.entity.SequenceEntity;
 import com.ac.entity.UserEntity;
 import com.ac.service.book.BookService;
-import com.ac.util.DateUtils;
+//import com.ac.util.DateUtils;
 
 @Controller
 @RequestMapping("book")
@@ -34,7 +34,7 @@ public class BookController extends BaseController {
 
 		UserEntity sysUser = getSysUser(request);
 		request.setAttribute("username", sysUser.getName());
-		request.setAttribute("newDate",DateUtils.getCurrentDate ());
+//		request.setAttribute("newDate",DateUtils.getCurrentDate ());
 		List<ACBooksEntity> booksEntities =bookService.findListByProperty(ACBooksEntity.class, "userId", sysUser.getId());
 		for (ACBooksEntity acBooksEntity : booksEntities) {
 			ACTempEntity tempEntity = bookService.findUniqueByProperty(ACTempEntity.class, "id", acBooksEntity.getTempTxId());
@@ -46,7 +46,7 @@ public class BookController extends BaseController {
 	
 		request.setAttribute("temps", tempEntities);
 		if (booksEntities.size() > 0) {
-			request.setAttribute("listDate",DateUtils.getYYYYMMDD(booksEntities.get(0).getAcDate()));
+//			request.setAttribute("listDate",DateUtils.getYYYYMMDD(booksEntities.get(0).getAcDate()));
 			request.setAttribute("list", booksEntities);
 		}
 		return "book/books";
@@ -56,8 +56,8 @@ public class BookController extends BaseController {
 	@ResponseBody
 	public int addBook(String array, HttpServletRequest request) throws ParseException {
 		SimpleDateFormat sdf =   new SimpleDateFormat("yyyy-MM-dd" );
-		Date date = sdf.parse(DateUtils.getCurrentDate());
-		bookService.deleteByHql("DELETE ACBooksEntity where acDate=?", date);
+//		Date date = sdf.parse(DateUtils.getCurrentDate());
+//		bookService.deleteByHql("DELETE ACBooksEntity where acDate=?", date);
 		UserEntity sysUser = getSysUser(request);
 		try {
 			Map<String, Double> map=new HashMap<>();
@@ -83,19 +83,19 @@ public class BookController extends BaseController {
 	@RequestMapping("/addTemp")
 	@ResponseBody 
 	public int addTemp(String txName,String txType,HttpServletRequest request){
-		SequenceEntity sequenceEntity = bookService.findUniqueByProperty(SequenceEntity.class, "name", "AC_TEMP");
+//		SequenceEntity sequenceEntity = bookService.findUniqueByProperty(SequenceEntity.class, "name", "AC_TEMP");
          System.out.println(txName);
 		UserEntity sysUser = getSysUser(request);
-		Integer currentValue = sequenceEntity.getCurrentValue()+1;
+//		Integer currentValue = sequenceEntity.getCurrentValue()+1;
 		ACTempEntity acTempEntity=new ACTempEntity();
-		acTempEntity.setId(currentValue.intValue());
+//		acTempEntity.setId(currentValue.intValue());
 		acTempEntity.setTxName(txName);
 		acTempEntity.setTxType(Integer.valueOf(txType));
 		acTempEntity.setUserId(sysUser.getId());
 		acTempEntity.setCreateTime(new Date());
 		bookService.save(acTempEntity);
-		sequenceEntity.setCurrentValue(currentValue);
-		bookService.update(sequenceEntity);
+//		sequenceEntity.setCurrentValue(currentValue);
+//		bookService.update(sequenceEntity);
 		return 0;
 		
 	}
