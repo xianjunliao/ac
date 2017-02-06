@@ -36,8 +36,9 @@
 </head>
 <body>
 	<ul id="nav_ul" class="nav nav-tabs">
+	  <li class="active"><a href="${base}">首页</a></li>
 	<c:forEach items="${menus}" var="t">
-		<li class="active"><a href="${base}${t.src }">${t.menuName }</a></li>
+		<li ><a href="${base}${t.src }">${t.menuName }</a></li>
 		</c:forEach>
 	</ul>
 	<div id="u">
