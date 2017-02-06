@@ -30,20 +30,15 @@
 		$("#out_login").click(function() {
 			window.location.href="${base}outLogin";
 		});
-		  $("#nav_ul li").click(function()
-				    {
-				        $("#nav_ul li").attr("class","");
-				        $(this).attr("class","active");
-				    });
+
 	});
 </script>
 
 </head>
 <body>
 	<ul id="nav_ul" class="nav nav-tabs">
-	  <li class="active"><a href="${base}">首页</a></li>
-	<c:forEach items="${menus}" var="t">
-		<li ><a href="${base}${t.src }">${t.menuName }</a></li>
+		<c:forEach items="${menus}" var="t">
+        <li <c:if test="${t.menuCode =='home'}"> class="active" </c:if>><a  href="${base}${t.src }">${t.menuName }</a></li>
 		</c:forEach>
 	</ul>
 	<div id="u">
@@ -52,8 +47,9 @@
 				<button id="w_register" type="button" class="btn btn-link">注册</button>
 			</c:if> <c:if test="${username!=null}">
 			<span class="label label-success"> ${username}</span>
+			<button id="out_login" type="button" class="btn btn-link">退出登录</button>
 			</c:if>
-		<button id="out_login" type="button" class="btn btn-link">退出登录</button>
+		
 	</div>
 </body>
 </html>

@@ -10,8 +10,9 @@ body {
 	height: 100%;
 	font-family: 'Open Sans', sans-serif;
 	margin: 0;
-/* 	background-color: #AFEEEE; */
-    background:url(bj2.jpg) repeat;
+	background-color: #AFEEEE;
+   background:url(bj1.jpeg);  
+    background-size:100% 100%;
 }
 #nav_ul li{
 	font-size: 18px;
@@ -22,6 +23,7 @@ body {
 #nav_ul li a{
     color:#9C9676;
 }
+
 a:link{
 text-decoration:none;
 }
@@ -36,23 +38,23 @@ text-decoration:none;
 }
 #centrer {
 	position: absolute;
-	top: 50%;
+	top: 20%;
 	left: 50%;
 	margin: -150px 0 0 -150px;
-	width: 300px;
+	width: 500px;
 	height: 300px;
 }
 #login_centrer {
 	padding:10px;
 	width: 320px;
 	height: 180px;
-	background:url(bj1.jpeg) repeat;
+	background:url(bj1.jpeg) no-repeat;
 }
 #register_centrer{
 	padding:10px;
 	width: 320px;
 	height: 200px;
-	background:url(bj1.jpeg) repeat;
+	background:url(bj1.jpeg) no-repeat;
 }
 	
 }

@@ -37,8 +37,8 @@ private	Integer	id ;
 @Column(name = "create_time")@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 private	Date	createTime ;
 
-@Column(name = "order")
-private	Integer	order ;
+@Column(name = "menu_order")
+private	Integer	menuOrder ;
 
 @Column(name = "update_time")@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 private	Date	updateTime ;
@@ -54,15 +54,15 @@ private	Integer	isShow ;
 
 @Column(name = "menu_name")
 private	String	menuName ;
-
-
+@Column(name = "type")
+private Integer type;
 public	MenuEntity() {}
 
 public	MenuEntity(
 String menuCode,Integer id,Date createTime,Integer order,Date updateTime,Integer userId,String src,Integer isShow,String menuName){this.menuCode=menuCode;
 this.id=id;
 this.createTime=createTime;
-this.order=order;
+this.menuOrder=order;
 this.updateTime=updateTime;
 this.userId=userId;
 this.src=src;
@@ -91,11 +91,13 @@ this.menuName=menuName;
 	this.createTime=createTime;
 	}
 
-	public	Integer	getOrder () {
-	return	order;
+
+	public Integer getMenuOrder() {
+		return menuOrder;
 	}
-	public	void	setOrder(Integer  order) {
-	this.order=order;
+
+	public void setMenuOrder(Integer menu_order) {
+		this.menuOrder = menu_order;
 	}
 
 	public	Date	getUpdateTime () {
@@ -133,9 +135,16 @@ this.menuName=menuName;
 	this.menuName=menuName;
 	}
 
+public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
+	}
 
 public	String	toString () {
-	return	"MenuEntity[menuCode="+menuCode+",id="+id+",createTime="+createTime+",order="+order+",updateTime="+updateTime+",userId="+userId+",src="+src+",isShow="+isShow+",menuName="+menuName+"]";
+	return	"MenuEntity[menuCode="+menuCode+",id="+id+",createTime="+createTime+",menuOrder="+menuOrder+",updateTime="+updateTime+",userId="+userId+",src="+src+",isShow="+isShow+",menuName="+menuName+"]";
 	}
 
 }

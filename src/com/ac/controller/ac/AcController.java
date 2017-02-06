@@ -1,6 +1,7 @@
 package com.ac.controller.ac;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -16,9 +17,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ac.base.BaseController;
 import com.ac.entity.ACBooksEntity;
 import com.ac.entity.ACTempEntity;
+import com.ac.entity.MenuEntity;
 import com.ac.entity.SequenceEntity;
+import com.ac.entity.SubmenuEntity;
 //import com.ac.entity.SequenceEntity;
 import com.ac.entity.UserEntity;
+import com.ac.entity.UserMenuEntity;
 import com.ac.service.ac.AcService;
 
 //import com.ac.util.DateUtils;
@@ -33,11 +37,39 @@ public class AcController extends BaseController {
 	@RequestMapping("/accounting")
 	public String accounting(HttpServletRequest request) {
 		UserEntity sysUser = getSysUser(request);
+		List<MenuEntity> menus =new ArrayList<>();
+		Map<String, Object> map=new HashMap<>();
 		if (sysUser != null) {
-
+			map=new HashMap<>();
+			map.put("userId", sysUser.getId());
+			map.put("isShow", 1);
+			List<UserMenuEntity> userMenuEntities = acService.findListByProperty(UserMenuEntity.class,map);
+			for (UserMenuEntity userMenuEntity : userMenuEntities) {
+				MenuEntity menuEntity = acService.findUniqueByProperty(MenuEntity.class, "id", userMenuEntity.getMenuId());
+				menus.add(menuEntity);
+			}
+			
+			request.setAttribute("menus",menus);
+			if (menus.isEmpty()) {
+				map=new HashMap<>();
+				map.put("type", 0);
+				map.put("isShow", 1);
+				 menus = acService.findListByProperty(MenuEntity.class,map);
+				 request.setAttribute("menus",menus);
+			}
 			request.setAttribute("username", sysUser.getName());
+		}else{
+			map.put("type", 0);
+			map.put("isShow", 1);
+			
+		    menus = acService.findListByProperty(MenuEntity.class,map);
+			request.setAttribute("menus",menus);
+			
 		}
-		request.setAttribute("username", sysUser.getName());
+		
+		MenuEntity menuEntity = acService.findUniqueByProperty(MenuEntity.class, "menuCode", "home");
+		List<SubmenuEntity> submenus = acService.findListByProperty(SubmenuEntity.class, "pId", menuEntity.getId());
+		request.setAttribute("submenus",submenus);
 		return "ac/ac";
 	}
 
