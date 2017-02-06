@@ -10,9 +10,30 @@ body {
 	height: 100%;
 	font-family: 'Open Sans', sans-serif;
 	margin: 0;
-	background-color: #AFEEEE;
+/* 	background-color: #AFEEEE; */
+    background:url(bj2.jpg) repeat;
 }
-
+#nav_ul li{
+	font-size: 18px;
+    color:red;
+	font-weight:bold;
+	margin: 10px 10px 0 10px;
+}
+#nav_ul li a{
+    color:#9C9676;
+}
+a:link{
+text-decoration:none;
+}
+a:visited{
+text-decoration:none;
+}
+a:hover{
+text-decoration:none;
+}
+a:active{
+text-decoration:none;
+}
 #centrer {
 	position: absolute;
 	top: 50%;
@@ -21,10 +42,24 @@ body {
 	width: 300px;
 	height: 300px;
 }
+#login_centrer {
+	padding:10px;
+	width: 320px;
+	height: 180px;
+	background:url(bj1.jpeg) repeat;
+}
+#register_centrer{
+	padding:10px;
+	width: 320px;
+	height: 200px;
+	background:url(bj1.jpeg) repeat;
+}
+	
+}
 #books{
 	position: absolute;
 	top: 10%;
-	left: 10%;
+	left: 40%;
 }
 #centrer h1 {
 	color: #2D2D3F;
@@ -72,7 +107,7 @@ h1 {
 }
 
 .but {
-	width: 240px;
+	width: 200px;
 	min-height: 20px;
 	display: block;
 	background-color: #4a77d4;

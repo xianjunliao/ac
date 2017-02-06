@@ -11,8 +11,6 @@ import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
-/**** @time2017-01-21 00:45:05
-****/
 
 @Entity
 @Table(name ="AC_TEMP")
@@ -25,15 +23,15 @@ public  class  ACTempEntity  implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 5342309878744307578L;
-
-@Id
 @Column(name = "tx_name")
 private	String	txName ;
 
 @Column(name = "id")
+@GenericGenerator(name="increment", strategy = "increment")
 private	Integer	id ;
 
-@Column(name = "create_time")@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+@Column(name = "create_time")
+@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 private	Date	createTime ;
 
 @Column(name = "tx_type")
