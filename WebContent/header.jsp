@@ -66,9 +66,11 @@
 <script type="text/javascript" src="${base}/js/datepicker/WdatePicker.js"></script>
 
 <script type="text/javascript" src="${base}/js/common/common.js"></script>
-
+<link href="${base }css/style.css" type="text/css" rel="stylesheet">
+<script src="${base }js/index/GS.js" type="text/javascript"> </script>
 <script type="text/javascript" src="${base}js/layer/layer.js"></script>
 
-<title>AC：花小钱，记大账 </title>
-<link rel="shortcut icon" href="${base}img/ac_tm_32.ico"/>
+<title>好好做自己</title>
+<link rel="shortcut icon" href="${base}img/me.ico"/>
+
 

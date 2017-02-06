@@ -1,6 +1,5 @@
 eclipse.preferences.version=1
-encoding//WebContent/WEB-INF/book/books.jsp=UTF-8
-encoding//WebContent/WEB-INF/login.jsp=UTF-8
+encoding//WebContent/WEB-INF/ac/ac.jsp=UTF-8
 encoding//WebContent/header.jsp=UTF-8
 encoding//src/com/ac/dao/BaseCommonDao.java=UTF-8
 encoding//src/com/ac/util/CryptUtils.java=UTF-8

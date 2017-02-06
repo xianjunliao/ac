@@ -16,7 +16,7 @@ import com.ac.util.CryptUtils;
 import com.ac.util.StringUtils;
 
 @Controller
-@RequestMapping("user")
+@RequestMapping
 public class UserController extends BaseController {
 
 	@Resource
@@ -56,7 +56,13 @@ public class UserController extends BaseController {
 		return -1;
 
 	}
+	
+	@RequestMapping("/addUserAfterLogin")
+	public String addUserAfterLogin(UserEntity userEntity, HttpServletRequest request) {
 
+		return "redirect:/goLogin?userEntity="+userEntity;
+
+	}
 	@RequestMapping("/isExist")
 	@ResponseBody
 	public int isExist(String name, HttpServletRequest request) {
