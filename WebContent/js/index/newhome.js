@@ -304,7 +304,5 @@ $(function(){
 	    			});
 	    		};
 	    		header_roll();     
-
-
 	       
 });

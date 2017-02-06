@@ -30,6 +30,11 @@
 		$("#out_login").click(function() {
 			window.location.href="${base}outLogin";
 		});
+		  $("#nav_ul li").click(function()
+				    {
+				        $("#nav_ul li").attr("class","");
+				        $(this).attr("class","active");
+				    });
 	});
 </script>
 
