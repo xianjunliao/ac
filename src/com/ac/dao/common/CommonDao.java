@@ -1,4 +1,4 @@
-package com.ac.dao;
+package com.ac.dao.common;
 
 import java.math.BigDecimal;
 import java.util.LinkedHashMap;

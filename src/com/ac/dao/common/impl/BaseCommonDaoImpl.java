@@ -1,4 +1,4 @@
-package com.ac.dao;
+package com.ac.dao.common.impl;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -22,6 +22,7 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.internal.CriteriaImpl;
 import org.springframework.util.Assert;
 
+import com.ac.dao.common.BaseCommonDao;
 import com.ac.util.CriteriaQuery;
 import com.ac.util.DataGrid;
 import com.ac.util.SortDirection;

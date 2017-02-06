@@ -1,4 +1,4 @@
-﻿package com.ac.dao;
+﻿package com.ac.dao.common;
 
 import java.io.Serializable;
 import java.util.List;

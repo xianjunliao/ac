@@ -1,4 +1,4 @@
-package com.ac.dao;
+package com.ac.dao.common.impl;
 
 import java.math.BigDecimal;
 import java.sql.CallableStatement;
@@ -15,6 +15,7 @@ import org.hibernate.jdbc.ReturningWork;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
+import com.ac.dao.common.CommonDao;
 import com.ac.util.DataGrid;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })

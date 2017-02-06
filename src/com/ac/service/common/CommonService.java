@@ -1,4 +1,4 @@
-package com.ac.service;
+package com.ac.service.common;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

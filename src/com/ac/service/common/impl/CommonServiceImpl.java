@@ -1,4 +1,4 @@
-package com.ac.service;
+package com.ac.service.common.impl;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -14,8 +14,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ac.dao.CommonDao;
-import com.ac.dao.JdbcDao;
+import com.ac.dao.common.CommonDao;
+import com.ac.dao.jdbc.JdbcDao;
+import com.ac.service.common.CommonService;
 import com.ac.util.CriteriaQuery;
 import com.ac.util.DataGrid;
 import com.ac.util.SortDirection;
