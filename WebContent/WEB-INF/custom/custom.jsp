@@ -33,23 +33,13 @@
 			window.location.href = "${base}outLogin";
 		});
 
-		$("#show").click(function() {
-			var ids = getSelectDataID();
-			if (ids.length == 0) {
-
-				layer.msg("请选中需要显示的菜单！");
-				return;
-			}
-			window.location.href = "${base}showMenu?ids=" + ids;
-		});
-		$("#hidden").click(function() {
-			var ids = getSelectDataID();
-			if (ids.length == 0) {
-
-				layer.msg("请选中需要隐藏的菜单！");
-				return;
-			}
-			window.location.href = "${base}hideMenu?ids=" + ids;
+		$("#goMenuOrder").click(function() {
+			layer.open({
+				area : [ '340px', '160px' ],
+				title : '修改菜单排序',
+				type : 2,
+				content : '${base}goMenuOrder?menuCode='+"custom"
+			});
 		});
 	});
 
@@ -86,6 +76,8 @@
 					菜单设置 <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" role="menu">
+				    <li><a id="goMenuOrder" href="#">修改菜单排序</a></li>
+					<li class="divider"></li>
 					<c:forEach items="${ms}" var="m">
 						<li><a href="${base}showCustomMenu?menuCode=${m.menuCode}">${m.menuName}</a></li>
 					</c:forEach>
@@ -95,11 +87,6 @@
 		</c:if>
 
 	</div>
-	<div id="centrer">
-
-<!-- 		<div id="process-custom-toolbar"> -->
-<!-- 		</div> -->
-<!-- 		<table id="datagrid"></table> -->
-	</div>
+	<div class="container"></div>
 </body>
 </html>

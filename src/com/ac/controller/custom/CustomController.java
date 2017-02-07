@@ -19,10 +19,7 @@ import com.ac.entity.MenuEntity;
 import com.ac.entity.UserEntity;
 import com.ac.entity.UserMenuEntity;
 import com.ac.service.custom.CustomService;
-import com.ac.util.CriteriaQuery;
 import com.ac.util.DataGrid;
-import com.ac.util.HqlGenerateUtil;
-import com.ac.util.SortDirection;
 
 @Controller
 @RequestMapping
@@ -145,31 +142,17 @@ public class CustomController extends BaseController {
 	}
 	
 	@RequestMapping("/goMenuOrder")
-	public String goMenuOrder(HttpServletRequest request) {
+	public String goMenuOrder(String menuCode,HttpServletRequest request) {
 		try {
-			return "custom/menuOrder";
-
-		} catch (Exception e) {
-
-			return "custom/menuOrder";
-		}
-
-	}
-	
-	@RequestMapping("/goMenuOrderUp")
-	@ResponseBody
-	public int goMenuOrderUp(String id,HttpServletRequest request) {
-		try {
-//			UserMenuEntity menuEntity = customService.findUniqueByProperty(UserMenuEntity.class, "id", id);
-//			UserEntity sysUser = getSysUser(request);
-			int parseInt = Integer.parseInt(id);
-			UserMenuEntity userMenuEntity = customService.findUniqueByHql("from UserMenuEntity where id=? ",parseInt);
-
-			int umOrder = userMenuEntity.getUmOrder();
-			customService.updateByHql("update UserMenuEntity set umOrder=? where id=?",umOrder-1 ,parseInt);
 			
-			return umOrder-1;
-			
+			MenuEntity menuEntity = customService.findUniqueByProperty(
+					MenuEntity.class, "menuCode", menuCode);
+			UserMenuEntity userMenuEntity = customService.findUniqueByHql("from UserMenuEntity where menuId=? ",menuEntity.getId());
+			menuEntity.setMenuOrder(userMenuEntity.getUmOrder());
+			System.out.println(menuEntity);
+			request.setAttribute("order", menuEntity);
+			request.setAttribute("id", userMenuEntity.getId());
+			return "custom/menuOrder";
 
 		} catch (Exception e) {
 
@@ -178,18 +161,12 @@ public class CustomController extends BaseController {
 
 	}
 	
-	@RequestMapping("/goMenuOrderUpDown")
+	@RequestMapping("/doMenuOrderUp")
 	@ResponseBody
-	public int goMenuOrderUpDown(String order,HttpServletRequest request) {
+	public int goMenuOrderUp(String id,int order,HttpServletRequest request) {
 		try {
-			UserEntity sysUser = getSysUser(request);
-//			int parseInt = Integer.parseInt(id);
-//			UserMenuEntity userMenuEntity = customService.findUniqueByHql("from UserMenuEntity where id=? ",parseInt);
-
-//			int umOrder = userMenuEntity.getUmOrder();
-			customService.updateByHql("update UserMenuEntity set umOrder=? where umOrder=? and userId=?",Integer.parseInt(order)+1 ,Integer.parseInt(order),sysUser.getId());
-			
-//			UserMenuEntity userMenuEntity2 = customService.findUniqueByHql("from UserMenuEntity where userId=? and umOrder=? ",sysUser.getId(),umOrder+1);
+			int parseInt = Integer.parseInt(id);
+			customService.updateByHql("update UserMenuEntity set umOrder=? where id=?",order ,parseInt);
 			return 0;
 			
 
@@ -199,4 +176,5 @@ public class CustomController extends BaseController {
 		}
 
 	}
+	
 }

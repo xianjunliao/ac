@@ -10,87 +10,41 @@
 <META HTTP-EQUIV="Expires" CONTENT="0">
 <script type="text/javascript">
 	$(function() {
-		$('#datagrid').bootstrapTable({
-			url : "${base}datagrid", // 接口 URL 地址
-			pagination : false, // 开启分页功能
-			sidePagination : 'server',
-			toolbar : '#process-custom-toolbar',
-			showColumns : false,
-			escape : true,
-			idField : "id",
-			columns : [ {
-				align : 'center',
-				valign : 'middle',
-				checkbox : true
-			}, {
-				field : 'id',
-				visible : false,
-				switchable : false
-			}, {
-				field : 'menuCode',
-				title : '菜单编码',
-				width : '130'
-			}, {
-				field : 'menuName',
-				title : '菜单名称',
-				width : '230'
-			},{
-				field : 'menuOrder',
-				title : '排序',
-				width : '130'
-			}]
-		});
 		
-		$("#up").click(function() {
-			var ids = getSelectDataID();
-			if (ids.length == 0) {
+		$("#submit").click(function() {
+        var id=$("#id").val();
+        var order =$("#orderNo").val();
 
-				layer.msg("请选中需要显示的菜单！");
-				return;
-			}
-			if (ids.length > 1) {
-				layer.msg("只能选中一行！");
-				return;
-			}
-			
 			$.ajax({
 				cache : true,
 				type : "POST",
-				url : "${base}goMenuOrderUp?id="+ids[0],
+				url : "${base}doMenuOrderUp?id="+id+"&order="+order,
 				async : false,
 				success : function(data) {
-					$.ajax({
-						cache : true,
-						type : "POST",
-						url : "${base}goMenuOrderUpDown?order="+data,
-						async : false,
-						success : function(data) {
-							$('#datagrid').bootstrapTable('refresh');
-						}
-					});
+					if(data==0){
+					parent.location.reload();
+					}
 				}
 			});
 		});
 	});
-	function getSelectDataID() {
-		var ids = new Array();
-		$($('#datagrid').bootstrapTable('getSelections')).each(
-				function(index, element) {
-					ids.push(element.id);
-				});
-		return ids;
-
-	}
 </script>
 
 </head>
 <body>
 	<div id="menuOrder_centrer">
-		<div id="process-custom-toolbar">
-			<button id="up" type="button" class="btn btn-link">上移</button>
-			<button id="down" type="button" class="btn btn-link">下移</button>
-		</div>
-		<table id="datagrid"></table>
+		<input type="hidden" class="form-control" id="id" name="id" value="${id}"/>
+			<table class="form_table" style="margin-top: 16px;">
+				<tbody>
+					<tr>
+						<th style="width: 0px;"><font color="red"></font>更改${order.menuName }菜单序列:</th>
+						<td><input type="text" class="form-control" id="orderNo" name="orderNo" value="${order.menuOrder}"/></td>
+				</tr>
+				<tr>
+						<td colspan="2" class="from_table_submit" style="text-align: center;"><input type="button" id="submit" class="btn btn-info" style="width: 100px; margin-top: 10px;" value="确定" /></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>

@@ -31,10 +31,10 @@
 		
 		$("#goMenuOrder").click(function() {
 			layer.open({
-				area : [ '340px', '290px' ],
+				area : [ '340px', '160px' ],
 				title : '修改菜单排序',
 				type : 2,
-				content : '${base}goMenuOrder'
+				content : '${base}goMenuOrder?menuCode='+"home"
 			});
 		});
 		$("#out_login").click(function() {
