@@ -36,40 +36,7 @@ public class AcController extends BaseController {
 
 	@RequestMapping("/accounting")
 	public String accounting(HttpServletRequest request) {
-		UserEntity sysUser = getSysUser(request);
-		List<MenuEntity> menus =new ArrayList<>();
-		Map<String, Object> map=new HashMap<>();
-		if (sysUser != null) {
-			map=new HashMap<>();
-			map.put("userId", sysUser.getId());
-			map.put("isShow", 1);
-			List<UserMenuEntity> userMenuEntities = acService.findListByProperty(UserMenuEntity.class,map);
-			for (UserMenuEntity userMenuEntity : userMenuEntities) {
-				MenuEntity menuEntity = acService.findUniqueByProperty(MenuEntity.class, "id", userMenuEntity.getMenuId());
-				menus.add(menuEntity);
-			}
-			
-			request.setAttribute("menus",menus);
-			if (menus.isEmpty()) {
-				map=new HashMap<>();
-				map.put("type", 0);
-				map.put("isShow", 1);
-				 menus = acService.findListByProperty(MenuEntity.class,map);
-				 request.setAttribute("menus",menus);
-			}
-			request.setAttribute("username", sysUser.getName());
-		}else{
-			map.put("type", 0);
-			map.put("isShow", 1);
-			
-		    menus = acService.findListByProperty(MenuEntity.class,map);
-			request.setAttribute("menus",menus);
-			
-		}
-		
-		MenuEntity menuEntity = acService.findUniqueByProperty(MenuEntity.class, "menuCode", "home");
-		List<SubmenuEntity> submenus = acService.findListByProperty(SubmenuEntity.class, "pId", menuEntity.getId());
-		request.setAttribute("submenus",submenus);
+		commonMapping(acService,request);
 		return "ac/ac";
 	}
 

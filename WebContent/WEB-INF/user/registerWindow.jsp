@@ -63,7 +63,7 @@
 		}
 		$.ajax({
 			type : "POST",
-			url : "${base}user/isExist?name="+name,
+			url : "${base}isExist?name="+name,
 			async : false,
 			success : function(data) {
 				
@@ -83,7 +83,7 @@
 		var name=$("#name").val();
 		$.ajax({
 			type : "POST",
-			url : "${base}user/addUser",
+			url : "${base}addUser",
 			data : $('#regForm').serialize(),// 你的formid
 			async : false,
 			success : function(data) {

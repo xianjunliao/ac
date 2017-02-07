@@ -11,26 +11,8 @@
 
 <script type="text/javascript">
 	$(function() {
-		$('#datagrid').bootstrapTable(
-				{
-					url : "${base}datagrid", // 接口 URL 地址
-					pagination : true, // 开启分页功能
-					sidePagination : 'server',
-					toolbar : '#process-custom-toolbar',
-					showColumns : false,
-					escape : true,
-// 					fixedColumns : isFixed,
-					idField : "id",
-					columns : [ { align : 'center', valign : 'middle', checkbox : true }, 
-					            { field : 'id', visible : false, switchable : false },
-							{ field : 'menuCode', title : '菜单编码', width : '130'}, 
-							{ field : 'menuName', title : '菜单名称', width : '230'},
-							{ field : 'createTime', title : '创建时间  ', width : '160', sortable : true, formatter : formatDateTime }] });
-		
-		
-		
-		
-		
+
+
 		$("#w_login").click(function() {
 			layer.open({
 				area : [ '320px', '180px' ],
@@ -48,53 +30,76 @@
 			});
 		});
 		$("#out_login").click(function() {
-			window.location.href="${base}outLogin";
+			window.location.href = "${base}outLogin";
 		});
-		
+
 		$("#show").click(function() {
-			
-			window.location.href="${base}showMenu?ids="+getSelectDataID();
+			var ids = getSelectDataID();
+			if (ids.length == 0) {
+
+				layer.msg("请选中需要显示的菜单！");
+				return;
+			}
+			window.location.href = "${base}showMenu?ids=" + ids;
 		});
-		
+		$("#hidden").click(function() {
+			var ids = getSelectDataID();
+			if (ids.length == 0) {
+
+				layer.msg("请选中需要隐藏的菜单！");
+				return;
+			}
+			window.location.href = "${base}hideMenu?ids=" + ids;
+		});
 	});
-	
+
 	function getSelectDataID() {
 		var ids = new Array();
-		$($('#datagrid').bootstrapTable('getSelections')).each(function(index, element) {
-		ids.push(element.id);
-		});
+		$($('#datagrid').bootstrapTable('getSelections')).each(
+				function(index, element) {
+					ids.push(element.id);
+				});
 		return selectedIds;
 
 	}
 </script>
 
 </head>
-<body>
+<body id="body">
 	<ul id="nav_ul" class="nav nav-tabs">
 		<c:forEach items="${menus}" var="t">
-			
-        <li <c:if test="${t.menuCode =='custom'}"> class="active" </c:if>><a  href="${base}${t.src }">${t.menuName }</a></li>
+
+			<li <c:if test="${t.menuCode =='custom'}"> class="active" </c:if>><a
+				href="${base}${t.src }">${t.menuName }</a></li>
 		</c:forEach>
 	</ul>
 	<div id="u">
-	       <c:if test="${username==null}">
-				<button id="w_login" type="button" class="btn btn-link">登录</button>
-				<button id="w_register" type="button" class="btn btn-link">注册</button>
-			</c:if> <c:if test="${username!=null}">
-			<span class="label label-success"> ${username}</span>
+		<c:if test="${username==null}">
+			<button id="w_login" type="button" class="btn btn-link">登录</button>
+			<button id="w_register" type="button" class="btn btn-link">注册</button>
+		</c:if>
+		<c:if test="${username!=null}">
+			<span class="label label-danger"> ${username}</span>
+			<div class="btn-group">
+				<button type="button" class="btn btn-success dropdown-toggle btn-xs"
+					data-toggle="dropdown">
+					菜单设置 <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<c:forEach items="${ms}" var="m">
+						<li><a href="${base}showCustomMenu?menuCode=${m.menuCode}">${m.menuName}</a></li>
+					</c:forEach>
+				</ul>
+			</div>
 			<button id="out_login" type="button" class="btn btn-link">退出登录</button>
-			</c:if>
-		
+		</c:if>
+
 	</div>
 	<div id="centrer">
-	
-			<div id="process-custom-toolbar" >
-			<div class="form-inline">
-			<button type="button" id="show" class="btn btn-link">显示</button>
-			<button type="button" id="hidden" class="btn btn-link">隐藏</button>
-		</div>
-	</div>
-			<table id="datagrid"></table>
+
+<!-- 		<div id="process-custom-toolbar"> -->
+<!-- 		</div> -->
+<!-- 		<table id="datagrid"></table> -->
 	</div>
 </body>
 </html>

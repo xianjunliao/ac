@@ -481,112 +481,15 @@ $(function(){
 	    }
 	  });
 	}
+	
+	
 });
 
 function addTitle(v){
 	return "<span title='" + v + "'>" + v + "</span>";
 }
 
-/******************************bootstrapTable翻页保留已选项事件********************************/
-var tableIdValue = 'datagrid',selectedIds = [],selectedDataObj = {};
-/*
- * sleectedIds[Array] 已选项所有id
- * 默认id=datagrid,id非默认值需调用transIdValue传值
- * */
-function transIdValue (id){
-	return tableIdValue = id;
-}
-function clearValue (){
-	selectedList = {};
-	selectedDataObj = {};
-	selectedIds = [];
-}
-var selectedList = {};
-var tableCheckEvent = {
-		check:function(data,dom,type){
-			var currentPage = $('#'+tableIdValue).bootstrapTable('getOptions').pageNumber;
-			currentPage?currentPage:1;
-			if(type=='all'){
-				var newArray = [];
-				for(var i=0;i<data.length;i++){
-					newArray.push(i);
-					if(selectedIds.indexOf(data[i].id) == -1) selectedIds.push(data[i].id);
-				}
-				selectedList[currentPage] = newArray;
-				selectedDataObj[currentPage] = data;
-				return;
-			}	
-			if(selectedList[currentPage]){
-				if(selectedList[currentPage].indexOf($(dom).data('index')) == -1)
-					selectedList[currentPage].push($(dom).data('index'));			
-			}else{
-					selectedList[currentPage] = [$(dom).data('index')];
-			}
-			if(selectedIds.indexOf(data.id) == -1){selectedIds.push(data.id);}
-			if(selectedDataObj[currentPage]){
-				selectedDataObj[currentPage][$(dom).data('index')] = $.extend(true,{},data);
-			}else{
-				var newArray = new Array();
-				newArray[$(dom).data('index')] = $.extend(true,{},data);
-				selectedDataObj[currentPage] = newArray;
-			}
-		},
-		unCheck:function(data,dom,type){
-			var currentPage = $('#'+tableIdValue).bootstrapTable('getOptions').pageNumber;
-				currentPage?currentPage:1;
-			if(type=="all"){
-				selectedList[currentPage] = [];
-				$.each(data,function(index,row){
-					console.log(selectedIds.indexOf(row.id));
-					var othIndex = selectedIds.indexOf(row.id);
-					selectedIds.splice(othIndex,1);
-					//selectedIds.remove(othIndex);
-						console.log(selectedIds);
-				});
-				//console.log(selectedIds);
-				selectedDataObj[currentPage] = [];
-				return;
-			}
-			var deleNum = $(dom).data('index');
-			$.each(selectedList[currentPage],function(index,row){
-				if(deleNum == row){
-					var newArray = $.extend(true,[],selectedList[currentPage]);
-					newArray.splice(index,1);
-					selectedList[currentPage] = newArray;
-					return false;
-				}
-			});
-			$.each(selectedIds,function(index,row){
-				if(data.id == row){
-					selectedIds.splice(index,1);
-					return false;
-				}
-			});
-			delete selectedDataObj[currentPage][deleNum];
-			console.log(selectedDataObj);
-		}
-}
-$(document).on('check.bs.table',function(e,data,dom){
-		tableCheckEvent.check(data,dom);		
-});
-$(document).on('uncheck.bs.table',function(e,data,dom){	
-		tableCheckEvent.unCheck(data,dom);	
-});
-$(document).on('check-all.bs.table',function(e,data,dom){
-		tableCheckEvent.check(data,dom,'all');	
-});
-$(document).on('uncheck-all.bs.table',function(e,data,dom){	
-		tableCheckEvent.unCheck(data,dom,'all');	
-});
-$(document).on('load-success.bs.table',function(e,data,dom){
-	var currentPage = $('#'+tableIdValue).bootstrapTable('getOptions').pageNumber;
-	if(selectedList[currentPage]){
-		$.each(selectedList[currentPage],function(index,rows){
-			$('#'+tableIdValue).bootstrapTable('check', rows);
-		});
-	}
-});
-/*******************************************************************/
+
 
 $(document).on('click','#moreBtn',function(){
 	if($(this).hasClass('slideDown')){
