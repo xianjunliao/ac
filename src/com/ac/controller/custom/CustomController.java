@@ -157,19 +157,40 @@ public class CustomController extends BaseController {
 	}
 	
 	@RequestMapping("/goMenuOrderUp")
-	public String goMenuOrderUp(String id,HttpServletRequest request) {
+	@ResponseBody
+	public int goMenuOrderUp(String id,HttpServletRequest request) {
 		try {
 //			UserMenuEntity menuEntity = customService.findUniqueByProperty(UserMenuEntity.class, "id", id);
-			UserEntity sysUser = getSysUser(request);
+//			UserEntity sysUser = getSysUser(request);
 			int parseInt = Integer.parseInt(id);
 			UserMenuEntity userMenuEntity = customService.findUniqueByHql("from UserMenuEntity where id=? ",parseInt);
 
 			int umOrder = userMenuEntity.getUmOrder();
 			customService.updateByHql("update UserMenuEntity set umOrder=? where id=?",umOrder-1 ,parseInt);
 			
-			customService.updateByHql("update UserMenuEntity set umOrder=? where userId=? and umOrder=?",userMenuEntity.getUmOrder()+1 ,sysUser.getId(),umOrder-1);
+			return umOrder-1;
 			
-			return "custom/menuOrder";
+
+		} catch (Exception e) {
+
+			throw e;
+		}
+
+	}
+	
+	@RequestMapping("/goMenuOrderUpDown")
+	@ResponseBody
+	public int goMenuOrderUpDown(String order,HttpServletRequest request) {
+		try {
+			UserEntity sysUser = getSysUser(request);
+//			int parseInt = Integer.parseInt(id);
+//			UserMenuEntity userMenuEntity = customService.findUniqueByHql("from UserMenuEntity where id=? ",parseInt);
+
+//			int umOrder = userMenuEntity.getUmOrder();
+			customService.updateByHql("update UserMenuEntity set umOrder=? where umOrder=? and userId=?",Integer.parseInt(order)+1 ,Integer.parseInt(order),sysUser.getId());
+			
+//			UserMenuEntity userMenuEntity2 = customService.findUniqueByHql("from UserMenuEntity where userId=? and umOrder=? ",sysUser.getId(),umOrder+1);
+			return 0;
 			
 
 		} catch (Exception e) {

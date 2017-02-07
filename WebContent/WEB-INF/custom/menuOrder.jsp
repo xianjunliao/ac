@@ -59,7 +59,15 @@
 				url : "${base}goMenuOrderUp?id="+ids[0],
 				async : false,
 				success : function(data) {
-					$('#datagrid').bootstrapTable('refresh');
+					$.ajax({
+						cache : true,
+						type : "POST",
+						url : "${base}goMenuOrderUpDown?order="+data,
+						async : false,
+						success : function(data) {
+							$('#datagrid').bootstrapTable('refresh');
+						}
+					});
 				}
 			});
 		});
@@ -70,7 +78,7 @@
 				function(index, element) {
 					ids.push(element.id);
 				});
-		return selectedIds;
+		return ids;
 
 	}
 </script>
