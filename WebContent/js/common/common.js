@@ -474,13 +474,7 @@ function resetParams(id){
 
 //金额不小于0规则
 $(function(){
-	if($('form').length){
-	$('form').validator({
-	    rules:{
-	      plus:[/^[1-9]\d*(\.\d+)?$/,'金额不能小于0']
-	    }
-	  });
-	}
+
 	
 	
 });

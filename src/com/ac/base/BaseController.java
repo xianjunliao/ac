@@ -20,6 +20,7 @@ import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 
+import com.ac.entity.MQEntity;
 import com.ac.entity.MenuEntity;
 import com.ac.entity.SubmenuEntity;
 import com.ac.entity.UserEntity;
@@ -146,7 +147,7 @@ public class BaseController {
 		out.close();
 		is.close();
 	}
-	public void commonMapping(CommonService commonService,HttpServletRequest request) {
+	public void commonMapping(String menuCode,CommonService commonService,HttpServletRequest request) {
 		UserEntity sysUser = getSysUser(request);
 		List<MenuEntity> menus = new ArrayList<>();
 		Map<String, Object> map = new HashMap<>();
@@ -188,10 +189,10 @@ public class BaseController {
 			request.setAttribute("menus", menus);
 
 		}
-		MenuEntity menuEntity = commonService.findUniqueByProperty(
-				MenuEntity.class, "menuCode", "custom");
-		List<SubmenuEntity> submenus = commonService.findListByProperty(
-				SubmenuEntity.class, "pId", menuEntity.getId());
+		List<SubmenuEntity> submenus = commonService.findListByProperty(SubmenuEntity.class,"pCode",menuCode);
 		request.setAttribute("submenus", submenus);
+		List<MQEntity> mqs = commonService.findListByProperty(MQEntity.class);
+		request.setAttribute("mqs", mqs);
+		
 	}
 }

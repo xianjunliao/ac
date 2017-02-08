@@ -29,8 +29,14 @@ public class CustomController extends BaseController {
 
 	@RequestMapping("/custom")
 	public String accounting(HttpServletRequest request) {
-		commonMapping(customService, request);
-		return "custom/custom";
+		UserEntity sysUser = getSysUser(request);
+		if (sysUser==null) {
+			return "redirect:/";
+		}else{
+			
+			commonMapping("custom",customService,request);
+			return "ac/ac";
+		}
 	}
 
 	@RequestMapping("/datagrid")
@@ -149,7 +155,6 @@ public class CustomController extends BaseController {
 					MenuEntity.class, "menuCode", menuCode);
 			UserMenuEntity userMenuEntity = customService.findUniqueByHql("from UserMenuEntity where menuId=? ",menuEntity.getId());
 			menuEntity.setMenuOrder(userMenuEntity.getUmOrder());
-			System.out.println(menuEntity);
 			request.setAttribute("order", menuEntity);
 			request.setAttribute("id", userMenuEntity.getId());
 			return "custom/menuOrder";

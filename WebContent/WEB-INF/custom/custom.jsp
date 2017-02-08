@@ -56,6 +56,7 @@
 
 </head>
 <body id="body">
+	<div class="container">
 	<ul id="nav_ul" class="nav nav-tabs">
 		<c:forEach items="${menus}" var="t">
 
@@ -87,6 +88,8 @@
 		</c:if>
 
 	</div>
-	<div class="container"></div>
+	
+		<c:if test="${username!=null}"></c:if>
+</div>
 </body>
 </html>

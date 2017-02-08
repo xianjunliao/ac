@@ -35,13 +35,20 @@ text-decoration:none;
 a:active{
 text-decoration:none;
 }
-#centrer {
+#index_centrer {
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin: -150px 0 0 -150px;
-	width: 500px;
-	height: 300px;
+/* 	top: 30%; */
+	left: 24%;
+/* 	margin: -150px 0 0 -150px; */
+/* 	width: 500px; */
+/* 	height: 300px; */
+}
+#index_centrer a{
+	color: #91cfa1;
+	text-decoration: none;
+}
+#index_centrer a:hover{
+	color: pink;
 }
 #login_centrer {
 	padding:10px;

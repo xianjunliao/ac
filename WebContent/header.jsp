@@ -69,8 +69,9 @@
 <link href="${base }css/style.css" type="text/css" rel="stylesheet">
 <script src="${base }js/index/GS.js" type="text/javascript"> </script>
 <script type="text/javascript" src="${base}js/layer/layer.js"></script>
+<link rel="stylesheet" type="text/css" href="${base }css/rigth/default.css" />
 
-<title>好好做自己</title>
+<title>学会管理自己</title>
 <link rel="shortcut icon" href="${base}img/me.ico"/>
 
 

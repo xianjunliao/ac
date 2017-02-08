@@ -36,8 +36,8 @@ public class SubmenuEntity implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createTime;
 
-	@Column(name = "p_id")
-	private Integer pId;
+	@Column(name = "p_code")
+	private String pCode;
 
 	@Column(name = "submenu_order")
 	private Integer submenuOrder;
@@ -61,20 +61,6 @@ public class SubmenuEntity implements Serializable {
 	public SubmenuEntity() {
 	}
 
-	public SubmenuEntity(String menuCode, Integer id, Date createTime,
-			Integer pId, Integer order, Date updateTime, Integer userId,
-			String src, Integer isShow, String menuName) {
-		this.menuCode = menuCode;
-		this.id = id;
-		this.createTime = createTime;
-		this.pId = pId;
-		this.submenuOrder = order;
-		this.updateTime = updateTime;
-		this.userId = userId;
-		this.src = src;
-		this.isShow = isShow;
-		this.menuName = menuName;
-	}
 
 	public String getMenuCode() {
 		return menuCode;
@@ -100,22 +86,15 @@ public class SubmenuEntity implements Serializable {
 		this.createTime = createTime;
 	}
 
-	public Integer getPId() {
-		return pId;
-	}
-
-	public void setPId(Integer pId) {
-		this.pId = pId;
+	public String getpCode() {
+		return pCode;
 	}
 
 
-	public Integer getpId() {
-		return pId;
+	public void setpCode(String pCode) {
+		this.pCode = pCode;
 	}
 
-	public void setpId(Integer pId) {
-		this.pId = pId;
-	}
 
 	public Integer getSubmenuOrder() {
 		return submenuOrder;
@@ -165,15 +144,16 @@ public class SubmenuEntity implements Serializable {
 		this.menuName = menuName;
 	}
 
+
 	@Override
 	public String toString() {
 		return "SubmenuEntity [getMenuCode()=" + getMenuCode() + ", getId()="
 				+ getId() + ", getCreateTime()=" + getCreateTime()
-				+ ", getPId()=" + getPId() + ", getpId()=" + getpId()
-				+ ", getSubmenuOrder()=" + getSubmenuOrder()
-				+ ", getUpdateTime()=" + getUpdateTime() + ", getUserId()="
-				+ getUserId() + ", getSrc()=" + getSrc() + ", getIsShow()="
-				+ getIsShow() + ", getMenuName()=" + getMenuName() + "]";
+				+ ", getpCode()=" + getpCode() + ", getSubmenuOrder()="
+				+ getSubmenuOrder() + ", getUpdateTime()=" + getUpdateTime()
+				+ ", getUserId()=" + getUserId() + ", getSrc()=" + getSrc()
+				+ ", getIsShow()=" + getIsShow() + ", getMenuName()="
+				+ getMenuName() + "]";
 	}
 
 }

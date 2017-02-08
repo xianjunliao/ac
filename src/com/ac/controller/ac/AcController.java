@@ -1,7 +1,6 @@
 package com.ac.controller.ac;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -17,12 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ac.base.BaseController;
 import com.ac.entity.ACBooksEntity;
 import com.ac.entity.ACTempEntity;
-import com.ac.entity.MenuEntity;
 import com.ac.entity.SequenceEntity;
 import com.ac.entity.SubmenuEntity;
 //import com.ac.entity.SequenceEntity;
 import com.ac.entity.UserEntity;
-import com.ac.entity.UserMenuEntity;
 import com.ac.service.ac.AcService;
 
 //import com.ac.util.DateUtils;
@@ -36,10 +33,27 @@ public class AcController extends BaseController {
 
 	@RequestMapping("/accounting")
 	public String accounting(HttpServletRequest request) {
-		commonMapping(acService,request);
-		return "ac/ac";
+		UserEntity sysUser = getSysUser(request);
+		if (sysUser==null) {
+			return "redirect:/";
+		}else{
+			
+			commonMapping("ac",acService,request);
+			return "ac/ac";
+		}
 	}
-
+	@RequestMapping("/queryac")
+	public String toDayAc(HttpServletRequest request) {
+		UserEntity sysUser = getSysUser(request);
+		if (sysUser==null) {
+			return "redirect:/";
+		}else{
+			
+			commonMapping("ac",acService,request);
+			return "ac/queryac";
+		}
+		
+	}
 	@RequestMapping("/addItem")
 	public String addItem(HttpServletRequest request) {
 		UserEntity sysUser = getSysUser(request);

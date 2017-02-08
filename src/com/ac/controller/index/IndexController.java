@@ -27,7 +27,7 @@ public class IndexController extends BaseController {
 
 	@RequestMapping("/")
 	public String goTask(HttpServletRequest request) {
-		commonMapping(indexService,request);
+		commonMapping("home",indexService,request);
 		return "/index";
 	}
 
@@ -85,6 +85,7 @@ public class IndexController extends BaseController {
 					}
 				}
 				session.setAttribute("ac", user);
+				session.setMaxInactiveInterval(1800);
 				return 1;
 			} else {
 				return 2;
