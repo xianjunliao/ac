@@ -41,8 +41,8 @@
 			window.location.href = "${base}outLogin";
 		});
 		var index=0;
-// 		$(".side li").eq(index).css("background-color", "#FFE4C4");
-// 		$(".side li").eq(index).css("opacity", "0.8");
+		$(".side li").eq(index).css("background-color", "#FFE4C4");
+		$(".side li").eq(index).css("opacity", "0.8");
 		$(".side li").each(function() {
 			$(this).click(function() {
 				var src = $(this).attr("id");
@@ -56,8 +56,8 @@
 				$(this).css("cursor", "pointer");
 				$(this).css("background-color", "#FFE4C4");
 			},function(){
-// 				$(this).css("background-color", "#AFEEEE");
-// 				$(".side li").eq(index).css("background-color", "#FFE4C4");
+				$(this).css("background-color", "#AFEEEE");
+				$(".side li").eq(index).css("background-color", "#FFE4C4");
 			});
 		});
 	});
@@ -119,7 +119,7 @@
 				<div style="clear: both"></div>
 			</c:if>
 		</div>
-		<div class="right">查账</div>
+		<div class="right">记账</div>
 		<div class="bottom"></div>
 	</div>
 </body>

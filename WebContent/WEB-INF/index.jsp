@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/header.jsp"%>
+<%@ include file="../header.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,31 +34,11 @@
 				area : [ '340px', '160px' ],
 				title : '修改菜单排序',
 				type : 2,
-				content : '${base}goMenuOrder?menuCode=' + "ac"
+				content : '${base}goMenuOrder?menuCode=' + "home"
 			});
 		});
 		$("#out_login").click(function() {
 			window.location.href = "${base}outLogin";
-		});
-		var index=0;
-// 		$(".side li").eq(index).css("background-color", "#FFE4C4");
-// 		$(".side li").eq(index).css("opacity", "0.8");
-		$(".side li").each(function() {
-			$(this).click(function() {
-				var src = $(this).attr("id");
-		        $(".side li").css("background-color", "#AFEEEE");
-				$(this).css("background-color", "#FFE4C4");
-				$(this).css("opacity", "0.8");
-				window.location.href = "${base}" + src;
-			});
-
-			$(this).hover(function() {
-				$(this).css("cursor", "pointer");
-				$(this).css("background-color", "#FFE4C4");
-			},function(){
-// 				$(this).css("background-color", "#AFEEEE");
-// 				$(".side li").eq(index).css("background-color", "#FFE4C4");
-			});
 		});
 	});
 </script>
@@ -70,7 +50,7 @@
 			<ul id="nav_ul" class="nav nav-tabs">
 				<c:forEach items="${menus}" var="t">
 
-					<li <c:if test="${t.menuCode =='ac'}"> class="active" </c:if>><a
+					<li <c:if test="${t.menuCode =='home'}"> class="active" </c:if>><a
 						href="${base}${t.src }">${t.menuName }</a></li>
 				</c:forEach>
 			</ul>
@@ -101,26 +81,22 @@
 
 			</div>
 		</div>
-		<div class="left">
-			<c:if test="${username!=null}">
-				<!-- 		</header> -->
-				<div class="side">
-					<nav class="dr-menu dr-menu-open">
-					<div class="dr-trigger">
-						<!-- 					<span class="dr-icon dr-icon-menu"></span><a class="dr-label">选项</a> -->
-					</div>
-					<ul>
-						<c:forEach items="${submenus }" var="s">
-							<li id="${s.src }">${s.menuName }</li>
-						</c:forEach>
-					</ul>
-					</nav>
-				</div>
-				<div style="clear: both"></div>
+		<div class="left"></div>
+		<div class="right">
+			<c:if test="${username==null}">
+				<h2>&nbsp;&nbsp;想有效的的管理自己吗？想的话就登录本网站吧。</h2>
 			</c:if>
+			<c:if test="${username!=null}">
+				<h2>&nbsp;&nbsp;合理的管理自己，才能使自己更好的成长！</h2>
+			</c:if>
+			<c:forEach items="${mqs}" var="m">
+				<a>&nbsp;&nbsp;&nbsp;&nbsp;${m.id}.
+					${m.text}&nbsp;&nbsp;&nbsp;&nbsp;—${m.author}</a>
+				<br>
+			</c:forEach>
 		</div>
-		<div class="right">查账</div>
 		<div class="bottom"></div>
 	</div>
+
 </body>
 </html>
