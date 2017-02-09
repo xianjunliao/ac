@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
 	$(function() {
-
+		init();
 		$("#w_login").click(function() {
 			layer.open({
 				area : [ '320px', '180px' ],
@@ -29,42 +29,54 @@
 			});
 		});
 
-		$("#goMenuOrder").click(function() {
-			layer.open({
-				area : [ '340px', '160px' ],
-				title : '修改菜单排序',
-				type : 2,
-				content : '${base}goMenuOrder?menuCode=' + "ac"
-			});
-		});
 		$("#out_login").click(function() {
 			window.location.href = "${base}outLogin";
 		});
-		var index=0;
-		$(".side li").eq(index).css("background-color", "#FFE4C4");
-		$(".side li").eq(index).css("opacity", "0.8");
+		$(".side li").css("background-color", "#AFEEEE");
 		$(".side li").each(function() {
 			$(this).click(function() {
+				var index = layer.load();
 				var src = $(this).attr("id");
-		        $(".side li").css("background-color", "#AFEEEE");
+				// 				window.location.href = "${base}" + src;
 				$(this).css("background-color", "#FFE4C4");
 				$(this).css("opacity", "0.8");
-				window.location.href = "${base}" + src;
+				$.ajax({
+					type : "POST",
+					url : "${base}" + src,
+					success : function(data) {
+
+						$(".right").html(data);
+						layer.close(index); 
+					}
+				});
 			});
 
 			$(this).hover(function() {
 				$(this).css("cursor", "pointer");
 				$(this).css("background-color", "#FFE4C4");
-			},function(){
+			}, function() {
 				$(this).css("background-color", "#AFEEEE");
-				$(".side li").eq(index).css("background-color", "#FFE4C4");
+				// 				$(".side li").eq(index).css("background-color", "#FFE4C4");
 			});
 		});
 	});
+
+	function init() {
+		var index = layer.load();
+		$("#changeac").css("background-color", "#FFE4C4");
+		$.ajax({
+			type : "POST",
+			url : "${base}changeac",
+			success : function(data) {
+				$(".right").html(data);
+				layer.close(index); 
+			}
+		});
+	}
 </script>
 
 </head>
-<body id="body">
+<body>
 	<div id="centrer">
 		<div class="top">
 			<ul id="nav_ul" class="nav nav-tabs">
@@ -82,20 +94,6 @@
 				</c:if>
 				<c:if test="${username!=null}">
 					<span class="label label-danger"> ${username}</span>
-					<div class="btn-group">
-						<button type="button"
-							class="btn btn-success dropdown-toggle btn-xs"
-							data-toggle="dropdown">
-							菜单设置 <span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-							<li><a id="goMenuOrder" href="#">修改菜单排序</a></li>
-							<li class="divider"></li>
-							<c:forEach items="${ms}" var="m">
-								<li><a href="${base}showCustomMenu?menuCode=${m.menuCode}">${m.menuName}</a></li>
-							</c:forEach>
-						</ul>
-					</div>
 					<button id="out_login" type="button" class="btn btn-link">退出登录</button>
 				</c:if>
 
@@ -103,12 +101,8 @@
 		</div>
 		<div class="left">
 			<c:if test="${username!=null}">
-				<!-- 		</header> -->
 				<div class="side">
 					<nav class="dr-menu dr-menu-open">
-					<div class="dr-trigger">
-						<!-- 					<span class="dr-icon dr-icon-menu"></span><a class="dr-label">选项</a> -->
-					</div>
 					<ul>
 						<c:forEach items="${submenus }" var="s">
 							<li id="${s.src }">${s.menuName }</li>
@@ -119,8 +113,12 @@
 				<div style="clear: both"></div>
 			</c:if>
 		</div>
-		<div class="right">记账</div>
-		<div class="bottom"></div>
+		<div class="right"></div>
+		<div class="bottom">
+			<div class="icp">
+				<a target="_blank" href="http://www.miitbeian.gov.cn">粤ICP备16059245号</a>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

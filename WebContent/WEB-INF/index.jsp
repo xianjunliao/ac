@@ -28,23 +28,41 @@
 				content : '${base}doRegister'
 			});
 		});
-
-		$("#goMenuOrder").click(function() {
-			layer.open({
-				area : [ '340px', '160px' ],
-				title : '修改菜单排序',
-				type : 2,
-				content : '${base}goMenuOrder?menuCode=' + "home"
-			});
-		});
 		$("#out_login").click(function() {
 			window.location.href = "${base}outLogin";
+		});
+		$(".side li").css("background-color", "#AFEEEE");
+		$(".side li").each(function() {
+			$(this).click(function() {
+				var index = layer.load();
+				var src = $(this).attr("id");
+				// 				window.location.href = "${base}" + src;
+				$(this).css("background-color", "#FFE4C4");
+				$(this).css("opacity", "0.8");
+				$.ajax({
+					type : "POST",
+					url : "${base}" + src,
+					success : function(data) {
+
+						$(".right").html("待开发......");
+						layer.close(index); 
+					}
+				});
+			});
+
+			$(this).hover(function() {
+				$(this).css("cursor", "pointer");
+				$(this).css("background-color", "#FFE4C4");
+			}, function() {
+				$(this).css("background-color", "#AFEEEE");
+				// 				$(".side li").eq(index).css("background-color", "#FFE4C4");
+			});
 		});
 	});
 </script>
 
 </head>
-<body id="body">
+<body>
 	<div id="centrer">
 		<div class="top">
 			<ul id="nav_ul" class="nav nav-tabs">
@@ -62,26 +80,23 @@
 				</c:if>
 				<c:if test="${username!=null}">
 					<span class="label label-danger"> ${username}</span>
-					<div class="btn-group">
-						<button type="button"
-							class="btn btn-success dropdown-toggle btn-xs"
-							data-toggle="dropdown">
-							菜单设置 <span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-							<li><a id="goMenuOrder" href="#">修改菜单排序</a></li>
-							<li class="divider"></li>
-							<c:forEach items="${ms}" var="m">
-								<li><a href="${base}showCustomMenu?menuCode=${m.menuCode}">${m.menuName}</a></li>
-							</c:forEach>
-						</ul>
-					</div>
 					<button id="out_login" type="button" class="btn btn-link">退出登录</button>
 				</c:if>
 
 			</div>
 		</div>
-		<div class="left"></div>
+		<div class="left">	<c:if test="${username!=null}">
+				<div class="side">
+					<nav class="dr-menu dr-menu-open">
+					<ul>
+						<c:forEach items="${submenus }" var="s">
+							<li id="${s.src }">${s.menuName }</li>
+						</c:forEach>
+					</ul>
+					</nav>
+				</div>
+				<div style="clear: both"></div>
+			</c:if></div>
 		<div class="right">
 			<c:if test="${username==null}">
 				<h2>&nbsp;&nbsp;想有效的的管理自己吗？想的话就登录本网站吧。</h2>
@@ -95,7 +110,9 @@
 				<br>
 			</c:forEach>
 		</div>
-		<div class="bottom"></div>
+		<div class="bottom">
+		<div class="icp"><a target="_blank" href="http://www.miitbeian.gov.cn">粤ICP备16059245号</a></div>
+		</div>
 	</div>
 
 </body>

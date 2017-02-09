@@ -50,10 +50,23 @@ public class AcController extends BaseController {
 		}else{
 			
 			commonMapping("ac",acService,request);
-			return "ac/queryac";
+			return "ac/audit";
 		}
 		
 	}
+	@RequestMapping("/changeac")
+	public String changeac(HttpServletRequest request) {
+		UserEntity sysUser = getSysUser(request);
+		if (sysUser==null) {
+			return "redirect:/";
+		}else{
+			
+			commonMapping("ac",acService,request);
+			return "ac/accounting";
+		}
+		
+	}
+	
 	@RequestMapping("/addItem")
 	public String addItem(HttpServletRequest request) {
 		UserEntity sysUser = getSysUser(request);

@@ -33,9 +33,8 @@ public class CustomController extends BaseController {
 		if (sysUser==null) {
 			return "redirect:/";
 		}else{
-			
 			commonMapping("custom",customService,request);
-			return "ac/ac";
+			return "custom/custom";
 		}
 	}
 
