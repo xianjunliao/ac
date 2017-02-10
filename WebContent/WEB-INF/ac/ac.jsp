@@ -10,6 +10,7 @@
 <META HTTP-EQUIV="Expires" CONTENT="0">
 
 <script type="text/javascript">
+var id="changeac";
 	$(function() {
 		init();
 		$("#w_login").click(function() {
@@ -32,19 +33,18 @@
 		$("#out_login").click(function() {
 			window.location.href = "${base}outLogin";
 		});
-		$(".side li").css("background-color", "#AFEEEE");
+	
 		$(".side li").each(function() {
 			$(this).click(function() {
 				var index = layer.load();
-				var src = $(this).attr("id");
+				id= $(this).attr("id");
 				// 				window.location.href = "${base}" + src;
-				$(this).css("background-color", "#FFE4C4");
-				$(this).css("opacity", "0.8");
+	     	 $(".side li").css("background-color", "#AFEEEE");
 				$.ajax({
 					type : "POST",
-					url : "${base}" + src,
+					url : "${base}" + id,
 					success : function(data) {
-
+						$("#"+id).css("background-color", "#FFE4C4");
 						$(".right").html(data);
 						layer.close(index); 
 					}
@@ -55,8 +55,8 @@
 				$(this).css("cursor", "pointer");
 				$(this).css("background-color", "#FFE4C4");
 			}, function() {
-				$(this).css("background-color", "#AFEEEE");
-				// 				$(".side li").eq(index).css("background-color", "#FFE4C4");
+				 $(".side li").css("background-color", "#AFEEEE");
+				$("#"+id).css("background-color", "#FFE4C4");
 			});
 		});
 	});

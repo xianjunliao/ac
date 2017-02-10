@@ -28,6 +28,9 @@ public class ACTempEntity implements Serializable {
 	@Column(name = "id")
 	@GenericGenerator(name = "increment", strategy = "increment")
 	private Integer id;
+	
+	@Column(name = "tx_code")
+	private String txCode;
 
 	@Column(name = "create_time")
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -39,21 +42,9 @@ public class ACTempEntity implements Serializable {
 	@Column(name = "remark")
 	private String remark;
 
-	@Column(name = "user_id")
-	private Integer userId;
-
 	public ACTempEntity() {
 	}
 
-	public ACTempEntity(String txName, Integer id, Date createTime,
-			Integer txType, String remark, Integer userId) {
-		this.txName = txName;
-		this.id = id;
-		this.createTime = createTime;
-		this.txType = txType;
-		this.remark = remark;
-		this.userId = userId;
-	}
 
 	public String getTxName() {
 		return txName;
@@ -95,18 +86,23 @@ public class ACTempEntity implements Serializable {
 		this.remark = remark;
 	}
 
-	public Integer getUserId() {
-		return userId;
+
+	public String getTxCode() {
+		return txCode;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+
+	public void setTxCode(String txCode) {
+		this.txCode = txCode;
 	}
 
+
+	@Override
 	public String toString() {
-		return "ACTempEntity[txName=" + txName + ",id=" + id + ",createTime="
-				+ createTime + ",txType=" + txType + ",remark=" + remark
-				+ ",userId=" + userId + "]";
+		return "ACTempEntity [getTxName()=" + getTxName() + ", getId()="
+				+ getId() + ", getCreateTime()=" + getCreateTime()
+				+ ", getTxType()=" + getTxType() + ", getRemark()="
+				+ getRemark() + ", getTxCode()=" + getTxCode() + "]";
 	}
 
 }

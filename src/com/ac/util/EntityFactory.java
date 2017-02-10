@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Types;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,29 +17,27 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-
-
-
+/**
+ * 实体生成工具类
+ * 
+ * @author wy
+ * 
+ */
 public class EntityFactory {
-	/**
-	 * ʵ������ɹ��� ����/��� ·�� ��\�ĳ�\\ outClass{Classname(int @@@,....)}//ClassnameΪ����
-	 * int Ϊ������� @@@������ ���ط�������淶
-	 */
-	private String outpath;// ��ɵ������ڵ�Ŀ¼
+	private String outpath;// 文件生成的路径
 
-	private String sentence;// ������� ���ظ�ʽ outClass{Classname(int @@@,....)}
+	private String sentence;// 生成的格式outClass{Classname(int @@@,....)}
 
 	private String tableName;
-	
+
 	private String packageName;
-	public static Map<String, String> colunmNames=new HashMap<String, String>();
-	public EntityFactory(String outpath, String sentence,String tableName) {
+	public static Map<String, String> colunmNames = new HashMap<String, String>();
+
+	public EntityFactory(String outpath, String sentence, String tableName) {
 		super();
 		this.outpath = outpath;
 		this.sentence = sentence;
-		this.tableName=tableName;
+		this.tableName = tableName;
 	}
 
 	public EntityFactory() {
@@ -75,9 +72,6 @@ public class EntityFactory {
 	}
 
 	public File makeFile(String name, String type) {
-		/**
-		 * ��ɵ��ļ� ���ֺͺ�׺��
-		 */
 		String path = outpath + name + "." + type;
 		File outf = new File(path);
 		if (outf.exists()) {
@@ -86,30 +80,29 @@ public class EntityFactory {
 			try {
 				outf.createNewFile();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		return outf;
 	}
 
+	/**
+	 * 类名
+	 * 
+	 * @param str
+	 * @return
+	 */
 	public String getClassName(String str) {
-		/**
-		 * �������
-		 */
 		String className = null;
 		if (str.contains("outClass")) {
 			int start = str.indexOf("{");
 			int sp = str.indexOf("(");
 			className = str.substring(start + 1, sp);
 		}
-		return className+"Entity";
+		return className + "Entity";
 	}
 
 	public ArrayList<String[]> splitString(String str) {
-		/**
-		 * ȡ���ؼ��� ���� ������ int @@@ 
-		 */
 		ArrayList<String[]> list = new ArrayList<String[]>();
 		if (str.contains("outClass")) {
 			int sp = str.indexOf("(");
@@ -127,9 +120,6 @@ public class EntityFactory {
 	}
 
 	public String initial(String str) {
-		/**
-		 * ����ĸ��д
-		 */
 		String s = str.substring(0, 1);
 		return s.toUpperCase() + str.substring(1);
 	}
@@ -143,7 +133,7 @@ public class EntityFactory {
 			File file = makeFile(getClassName(sentence), "java");
 			bw = new BufferedWriter(new FileWriter(file));
 			ArrayList<String[]> list = splitString(sentence);
-			bw.write("package "+packageName+";");
+			bw.write("package " + packageName + ";");
 			bw.newLine();
 			bw.write("import java.io.Serializable;");
 			bw.newLine();
@@ -168,75 +158,81 @@ public class EntityFactory {
 			bw.newLine();
 			bw.newLine();
 			bw.write("/**** @time"
-					+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+					+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+							.format(new Date()));
 			bw.newLine();
 			bw.write("****/");
 			bw.newLine();
 			bw.newLine();
+			bw.write("@SuppressWarnings(\"serial\")");
+			bw.newLine();
 			bw.write("@Entity");
 			bw.newLine();
-			bw.write("@Table(name ="+tableName+")");
+			bw.write("@Table(name =" + tableName + ")");
 			bw.newLine();
 			bw.write("@DynamicUpdate");
 			bw.newLine();
-			bw.write("public  class  " + getClassName(sentence) +"  implements Serializable"+ "{");
+			bw.write("public  class  " + getClassName(sentence)
+					+ "  implements Serializable" + "{");
 			bw.newLine();
 			bw.newLine();
 			bw.newLine();
 			bw.newLine();
-			
-			bw.write("@Id");
+
+			bw.write("\t@Id");
 			bw.newLine();
 			for (int i = 0; i < list.size(); i++) {
-				//属性
+				// 生成属性
 				String[] detail = list.get(i);
-				bw.write("@Column(name = "+colunmNames.get(detail[1])+")");
-		        if(detail[1].equals("id")){
-					bw.write("@GeneratedValue(generator=\"increment\")");
+				bw.write("\t@Column(name = " + colunmNames.get(detail[1]) + ")");
+				if (detail[1].equals("id")) {
 					bw.newLine();
-					bw.write("@GenericGenerator(name=\"increment\", strategy = \"increment\")");
+					bw.write("\t@GeneratedValue(generator=\"increment\")");
+					bw.newLine();
+					bw.write("\t@GenericGenerator(name=\"increment\", strategy = \"increment\")");
 				}
-		        if(detail[0].equals("Date")){
-		        	
-		        	bw.write("@DateTimeFormat(pattern = \"yyyy-MM-dd HH:mm:ss\")");
-		        }
-		        bw.newLine();
-				bw.write("private\t" + detail[0] + "\t" + detail[1] + " ;");
-				bw.newLine();
-				bw.newLine();
-			}
+				if (detail[0].equals("Date")) {
 
-			bw.newLine();
-			bw.write("public\t" + getClassName(sentence) + "() {}");
-
-			bw.newLine();
-			bw.newLine();
-
-			bw.write("public\t" + getClassName(sentence) + "(");
-			bw.newLine();
-			for (int i = 0; i < list.size(); i++) {
-				String[] detail = list.get(i);
-				if (i != list.size() - 1) {
-					bw.write(detail[0] + " " + detail[1] + ",");
-				} else {
-					bw.write(detail[0] + " " + detail[1]);
+					bw.write("\t@DateTimeFormat(pattern = \"yyyy-MM-dd HH:mm:ss\")");
 				}
-			}
-			bw.write(")");
-			bw.write("{");
-			for (int i = 0; i < list.size(); i++) {
-				
-				//get set方法
-				String[] detail = list.get(i);
-				bw.write("this." + detail[1] + "=" + detail[1] + ";");
+				bw.newLine();
+				bw.write("\tprivate\t" + detail[0] + "\t" + detail[1] + " ;");
+				bw.newLine();
 				bw.newLine();
 			}
-			bw.write("\t}");
 
 			bw.newLine();
-			/**
-			 * // get set����
-			 */
+
+			// 生成无参的构造函数
+			// bw.write("public\t" + getClassName(sentence) + "() {}");
+			//
+			// bw.newLine();
+			// bw.newLine();
+			//
+			// 生成有参的构造函数
+			// bw.write("public\t" + getClassName(sentence) + "(");
+			// bw.newLine();
+			// for (int i = 0; i < list.size(); i++) {
+			// String[] detail = list.get(i);
+			// if (i != list.size() - 1) {
+			// bw.write(detail[0] + " " + detail[1] + ",");
+			// } else {
+			// bw.write(detail[0] + " " + detail[1]);
+			// }
+			// }
+			// bw.write(")");
+			// bw.write("{");
+			// for (int i = 0; i < list.size(); i++) {
+			//
+			// // get set方法
+			// String[] detail = list.get(i);
+			// bw.write("this." + detail[1] + "=" + detail[1] + ";");
+			// bw.newLine();
+			// }
+			// bw.write("\t}");
+
+			bw.newLine();
+			// 生成get\set方法
 			for (int i = 0; i < list.size(); i++) {
 				String[] detail = list.get(i);
 				bw.newLine();
@@ -258,10 +254,8 @@ public class EntityFactory {
 			bw.newLine();
 			bw.newLine();
 
-			/**
-			 * // toString ����
-			 */
-			bw.write("public\tString\ttoString () {");
+			// 生成toString()
+			bw.write("\tpublic\tString\ttoString () {");
 			bw.newLine();
 			bw.write("\t" + "return" + "\t" + "\"" + getClassName(sentence)
 					+ "[");
@@ -296,54 +290,58 @@ public class EntityFactory {
 	public boolean checkClass() {
 		boolean boo = true;
 		if (getClassName(sentence) == null) {
-			System.out.println("ȱ��outClass�ؼ���");
 			boo = false;
 		}
 		return boo;
 
 	}
 
-	public void produceClass(String tableName,String path,String className) {
+	public void produceClass(String tableName, String path, String className) {
 
 		setOUTPATH(path);
-		setSentence("outClass{"+className+"("+ getColunmComments(tableName)+")");
-		setTableName("\""+tableName.toUpperCase()+"\"");
+		setSentence("outClass{" + className + "("
+				+ getColunmComments(tableName) + ")");
+		setTableName("\"" + tableName.toUpperCase() + "\"");
 		setPackageName(getPackagePath(path));
 		boolean boo = checkClass();
 		if (boo) {
 			writeFile();
-			System.out.println("成功！");
+			System.out.println("实体类生成成功！");
 		} else {
-			System.out.println("失败！");
+			System.out.println("实体类生成失败！");
 		}
 	}
 
-	public static  String getColunmComments(String tableName) {
+	public static String getColunmComments(String tableName) {
 		Map<String, String> colunmCommentsMap = new HashMap<String, String>();
 		try {
-			PropertiesUtil pUtil = new PropertiesUtil("config/dbconfig.properties");
+			PropertiesUtil pUtil = new PropertiesUtil(
+					"config/dbconfig.properties");
 			Properties p = pUtil.getProperties();
 			String url = p.getProperty("url");
 			String driverClassName = p.getProperty("driverClassName");
 			String username = p.getProperty("username");
 			String password = p.getProperty("password");
 			Class.forName(driverClassName);
-			Connection conn = (Connection) DriverManager.getConnection(url, username, password);
-			String sql = "select  * from  "+tableName; // ��ѯ��ݵ�sql���
-			Statement st = (Statement) conn.createStatement(); // ��������ִ�о�̬sql����Statement����st���ֲ�����
+			Connection conn = (Connection) DriverManager.getConnection(url,
+					username, password);
+			String sql = "select  * from  " + tableName;
+			Statement st = (Statement) conn.createStatement();
 			ResultSet rs = st.executeQuery(sql);
-			ResultSetMetaData metaData = rs.getMetaData(); 
-			  for (int i = 0; i < metaData.getColumnCount(); i++) {  
-		            // resultSet����±��1��ʼ  
-		            String columnName = metaData.getColumnName(i + 1);  
-		            int type = metaData.getColumnType(i + 1);  
-		            colunmCommentsMap.put(getColunmName(columnName), getDataType(type));
-		            colunmNames.put(getColunmName(columnName), "\""+columnName+"\"");
-		        }  
-			while (rs.next()) { // �ж��Ƿ�����һ�����
+			ResultSetMetaData metaData = rs.getMetaData();
+			for (int i = 0; i < metaData.getColumnCount(); i++) {
+
+				String columnName = metaData.getColumnName(i + 1);
+				int type = metaData.getColumnType(i + 1);
+				colunmCommentsMap.put(getColunmName(columnName),
+						getDataType(type));
+				colunmNames.put(getColunmName(columnName), "\"" + columnName
+						+ "\"");
+			}
+			while (rs.next()) {
 				colunmCommentsMap.put(rs.getString(1), rs.getString(2));
 			}
-			conn.close(); // �ر���ݿ�����
+			conn.close();
 		} catch (SecurityException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -351,55 +349,55 @@ public class EntityFactory {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		StringBuffer sb=new StringBuffer();
-		int i=1;
-		 for (Map.Entry<String, String> entry : colunmCommentsMap.entrySet()) {
-			 
-			 String type = entry.getValue();
-			 
-			 String key = entry.getKey();
-			 sb.append(type+" "+key);
-			 if (i<colunmCommentsMap.size()) {
-				
-				 sb.append(",");
+		StringBuffer sb = new StringBuffer();
+		int i = 1;
+		for (Map.Entry<String, String> entry : colunmCommentsMap.entrySet()) {
+
+			String type = entry.getValue();
+
+			String key = entry.getKey();
+			sb.append(type + " " + key);
+			if (i < colunmCommentsMap.size()) {
+
+				sb.append(",");
 			}
-             i++;			 
-			  }
+			i++;
+		}
 		return sb.toString();
 
 	}
-	
-	public static String getDataType(int i){
-		String dateTypeStr="String";
+
+	public static String getDataType(int i) {
+		String dateTypeStr = "String";
 		switch (i) {
 		case 4:
-			dateTypeStr="Integer";
+			dateTypeStr = "Integer";
 			break;
 		case 6:
-			dateTypeStr="Float";
+			dateTypeStr = "Float";
 			break;
 		case 8:
-			dateTypeStr="Double";
+			dateTypeStr = "Double";
 			break;
 		case 12:
-			dateTypeStr="String";
+			dateTypeStr = "String";
 			break;
 		case 91:
-			dateTypeStr="Date";
+			dateTypeStr = "Date";
 			break;
 		case 93:
-			dateTypeStr="Date";
+			dateTypeStr = "Date";
 			break;
 		default:
 			break;
 		}
 		return dateTypeStr;
 	}
-	
-	public static String getColunmName(String name){
-		String getColunmName=name;
+
+	public static String getColunmName(String name) {
+		String getColunmName = name;
 		String[] split = name.split("_");
-		if (split.length>0) {
+		if (split.length > 0) {
 			String str1;
 			try {
 				str1 = split[1];
@@ -408,47 +406,46 @@ public class EntityFactory {
 			}
 			String substring = str1.substring(0, 1);
 			String upperCase = substring.toUpperCase();
-			getColunmName = split[0]+upperCase+str1.substring(1);
+			getColunmName = split[0] + upperCase + str1.substring(1);
 			String strArray;
 			try {
-				StringBuffer sb=new StringBuffer();
+				StringBuffer sb = new StringBuffer();
 				sb.append(getColunmName);
 				for (int i = 2; i < split.length; i++) {
-					strArray=split[i];
+					strArray = split[i];
 					String substring2 = strArray.substring(0, 1);
 					sb.append(substring2.toUpperCase());
 					sb.append(strArray.substring(1));
 				}
 				return sb.toString();
 			} catch (Exception e) {
-				getColunmName=name;
-				 substring = str1.substring(0, 1);
-				 upperCase = substring.toUpperCase();
-				getColunmName = split[0]+upperCase+str1.substring(1);
+				getColunmName = name;
+				substring = str1.substring(0, 1);
+				upperCase = substring.toUpperCase();
+				getColunmName = split[0] + upperCase + str1.substring(1);
 				return getColunmName;
 			}
-			
+
 		}
-		
-		
+
 		return name;
 	}
-	
-	public static String getPackagePath(String path){
+
+	public static String getPackagePath(String path) {
 		String[] split = path.split("\\\\");
-		StringBuffer sb=new StringBuffer();
+		StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < split.length; i++) {
 			sb.append(split[i]);
-			if(i<split.length-1){
-			sb.append(".");
+			if (i < split.length - 1) {
+				sb.append(".");
 			}
 		}
 		return sb.toString().substring(4);
 	}
-	
+
 	public static void main(String[] args) {
-		
-		EntityFactory entityFactory=new EntityFactory();
-		entityFactory.produceClass("user_menu","src\\com\\ac\\entity\\", "Usermenu");
+
+		EntityFactory entityFactory = new EntityFactory();
+		entityFactory.produceClass("ac_log", "src\\com\\ac\\entity\\", "AcLog");
 	}
 }

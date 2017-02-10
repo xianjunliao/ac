@@ -22,7 +22,7 @@ a:hover {
 	line-height: 2.5;
 	font-weight: 400;
 	color: #60a773;
-	padding-top: 1em;
+	padding-top: 0em;
 }
 
 .side {
@@ -73,7 +73,6 @@ a:hover {
 #centrer .left li {
 	background-color: #AFEEEE;
 	text-align: center;
-	opacity: 0.8;
 	margin: 5px 0px 0px 0px;
 	font-size: 20px;
 /* 	font-weight:bold; */
