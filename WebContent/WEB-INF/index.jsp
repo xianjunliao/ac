@@ -20,6 +20,10 @@
 				content : '${base}doLogin'
 			});
 		});
+		
+		$("#newPage").click(function() {
+		 	location.href = "${base}page";
+		});
 		$("#w_register").click(function() {
 			layer.open({
 				area : [ '320px', '200px' ],
@@ -89,7 +93,7 @@
 					<span class="label label-danger"> ${username}</span>
 					<button id="out_login" type="button" class="btn btn-link">退出登录</button>
 				</c:if>
-
+                <button id="newPage" type="button" class="btn btn-link">新版面</button>
 			</div>
 		</div>
 		<div class="left">	<c:if test="${username!=null}">

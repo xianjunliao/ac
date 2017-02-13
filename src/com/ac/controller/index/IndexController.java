@@ -30,7 +30,11 @@ public class IndexController extends BaseController {
 		commonMapping("home",indexService,request);
 		return "/index";
 	}
-
+	@RequestMapping("/page")
+	public String goPage(HttpServletRequest request) {
+		
+		return "newPage/block_index";
+	}
 	@RequestMapping("/outLogin")
 	public String outLogin(HttpServletRequest request) {
 		HttpSession session = request.getSession();
