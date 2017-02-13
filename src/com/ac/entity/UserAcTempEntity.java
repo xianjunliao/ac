@@ -1,15 +1,15 @@
 package com.ac.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
 import javax.persistence.Id;
-import java.util.Date;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**** @time2017-02-10 10:57:27 ****/
 
@@ -34,7 +34,10 @@ public class UserAcTempEntity implements Serializable {
 
 	@Column(name = "temp_id")
 	private Integer tempId;
-
+	
+	@Column(name = "ac_status")
+	private Integer acStatus;
+	
 	public UserAcTempEntity() {
 	}
 
@@ -68,9 +71,18 @@ public class UserAcTempEntity implements Serializable {
 		this.tempId = tempId;
 	}
 
-	public String toString() {
-		return "UserAcTempEntity[id=" + id + ",userId=" + userId + ",tempId="
-				+ tempId + "]";
+	public Integer getAcStatus() {
+		return acStatus;
 	}
 
+	public void setAcStatus(Integer acStatus) {
+		this.acStatus = acStatus;
+	}
+
+	@Override
+	public String toString() {
+		return "UserAcTempEntity [getId()=" + getId() + ", getUserId()="
+				+ getUserId() + ", getTempId()=" + getTempId()
+				+ ", getAcStatus()=" + getAcStatus() + "]";
+	}
 }

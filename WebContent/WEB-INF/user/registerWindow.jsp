@@ -80,7 +80,7 @@
 		
 	}
 	function submit() {
-		var name=$("#name").val();
+		var index = layer.load();
 		$.ajax({
 			type : "POST",
 			url : "${base}addUser",
@@ -118,6 +118,7 @@
 				}else{
 					$("#msg").text("未知错误！");
 				}
+				layer.close(index); 
 			}
 		});
 

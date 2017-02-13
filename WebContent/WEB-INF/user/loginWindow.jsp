@@ -23,7 +23,7 @@
 
 	});
 	function submit() {
-
+		var index = top.layer.load();
 		$.ajax({
 			cache : true,
 			type : "POST",
@@ -40,6 +40,7 @@
 				}else{
 					$("#msg").text("未知错误！");
 				}
+				top.layer.close(index); 
 			}
 		});
 

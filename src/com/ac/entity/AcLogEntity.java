@@ -1,11 +1,14 @@
 package com.ac.entity;
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 import javax.persistence.Id;
+
 import java.util.Date;
+
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -34,9 +37,15 @@ public  class  AcLogEntity  implements Serializable{
 	@Column(name = "ac_code")
 	private	String	acCode ;
 
+	@Column(name = "temp_id")
+	private	Integer	tempId ;
+	
 	@Column(name = "user_id")
 	private	Integer	userId ;
-
+	
+	@Column(name = "ac_type")
+	private Integer acType;
+	
 	@Column(name = "ac_amount")
 	private	Double	acAmount ;
 
@@ -79,6 +88,12 @@ public  class  AcLogEntity  implements Serializable{
 	this.userId=userId;
 	}
 
+	public Integer getAcType() {
+		return acType;
+	}
+	public void setAcType(Integer acType) {
+		this.acType = acType;
+	}
 	public	Double	getAcAmount () {
 	return	acAmount;
 	}
@@ -99,8 +114,12 @@ public  class  AcLogEntity  implements Serializable{
 	public	void	setAcDate(Date  acDate) {
 	this.acDate=acDate;
 	}
-
-
+	public Integer getTempId() {
+		return tempId;
+	}
+	public void setTempId(Integer tempId) {
+		this.tempId = tempId;
+	}
 	public	String	toString () {
 	return	"AcLogEntity[id="+id+",acName="+acName+",acCode="+acCode+",userId="+userId+",acAmount="+acAmount+",acTime="+acTime+",acDate="+acDate+"]";
 	}
