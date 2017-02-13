@@ -29,7 +29,14 @@
 			});
 		});
 		$("#out_login").click(function() {
-			window.location.href = "${base}outLogin";
+		$.ajax({
+			type : "POST",
+			url : "${base}outLogin",
+			success : function(data) {
+		    location.href = "${base}";
+			}
+		});
+		
 		});
 		$(".side li").css("background-color", "#AFEEEE");
 		$(".side li").each(function() {

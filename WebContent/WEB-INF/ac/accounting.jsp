@@ -33,32 +33,33 @@
 		var objJson = "[]";
 		var jsonarray = eval('('+objJson+')');
 		$(".opt").click(function() {
-			
+			var optt=$(this).text();
+			if(optt=='记'){
 			var acCode=$(this).parents("tr").find("input").eq(0).val();   
 			var acName=$(this).parents("tr").find("span").eq(0).text();   
 			var acAmount=$(this).parents("tr").find("input").eq(1).val();   
 			var j={"acCode": acCode,"acName": acName ,"acAmount":acAmount};
 			jsonarray.push(j); 
-
+			$(this).text("已记"+acAmount+"元");
+			$(this).parents("tr").find("input").eq(1).val(0.00);
+			}
 		});
-		$(".btn").click(function() {
+		$("#saveac").click(function() {
 			var index = layer.load();
-			    console.log(jsonarray);
-			    console.log(JSON.stringify(jsonarray));
 			$.ajax({
 				type : "POST",
 				dataType:"json",
 				data:{ds:JSON.stringify(jsonarray)},
 				url : "${base}addAcLog",
 				success : function(data) {
-					layer.close(index); 
 					if(data==0){
 						
-						layer.alert("记账成功");
+						top.layer.msg("记账成功");
 					}else{
 						
-						layer.alert("记账失败");
+						top.layer.msg("记账失败");
 					}
+					layer.close(index); 
 					
 					
 				}
@@ -81,7 +82,7 @@
 						<td>消费了</td>
 						<td><input id="acAmount" type="text" value="0.00" /></td>
 						<td>元</td>
-						<td><a class="opt">&nbsp;&nbsp;&nbsp;&nbsp;记</a></td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;<a class="opt">记</a></td>
 					</tr>
 				</c:if>
 
@@ -92,15 +93,17 @@
 						<td>入账了</td>
 						<td><input id="acAmount" type="text" value="0.00" /></td>
 						<td>元</td>
-						<td><a class="opt">&nbsp;&nbsp;&nbsp;&nbsp;记</a></td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;<a class="opt">记</a></td>
 					</tr>
 				</c:if>
 			</c:forEach>
 		</table>
 	</div>
 	<div id="myButtons2" class="bs-example">
-		<button type="button" class="btn" 
+		<button type="button" id="saveac" class="btn" 
 				data-loading-text="正在保存...">保存记账
+		</button>
+		<button type="button" class="btn" >重新记账
 		</button>
 	</div>
 </body>

@@ -55,13 +55,13 @@ text-decoration:none;
 	padding:10px;
 	width: 320px;
 	height: 180px;
-	background:url(bj1.jpeg) no-repeat;
+/* 	background:url(bj1.jpeg) no-repeat; */
 }
 #register_centrer{
 	padding:10px;
 	width: 320px;
 	height: 200px;
-	background:url(bj1.jpeg) no-repeat;
+/* 	background:url(bj1.jpeg) no-repeat; */
 }
 #datagrid{
 	overflow:auto;

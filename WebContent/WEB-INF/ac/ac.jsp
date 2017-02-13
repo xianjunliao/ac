@@ -31,7 +31,13 @@ var id="changeac";
 		});
 
 		$("#out_login").click(function() {
-			window.location.href = "${base}outLogin";
+			$.ajax({
+				type : "POST",
+				url : "${base}outLogin",
+				success : function(data) {
+			    location.href = "${base}";
+				}
+			});
 		});
 	
 		$(".side li").each(function() {
