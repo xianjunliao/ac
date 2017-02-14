@@ -18,12 +18,14 @@
 				$("#msg").text("请输入用户名和密码！");	
 				return ;
 			}
-			submit();
+			var index = top.layer.load();
+			submit(index);
+		
 		});
 
 	});
-	function submit() {
-		var index = top.layer.load();
+	function submit(index) {
+	
 		$.ajax({
 			cache : true,
 			type : "POST",

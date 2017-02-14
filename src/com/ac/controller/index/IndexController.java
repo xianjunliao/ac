@@ -1,6 +1,5 @@
 package com.ac.controller.index;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -12,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ac.base.BaseController;
+import com.ac.entity.ACTempEntity;
 import com.ac.entity.MenuEntity;
+import com.ac.entity.UserAcTempEntity;
 import com.ac.entity.UserEntity;
 import com.ac.entity.UserMenuEntity;
 import com.ac.service.index.IndexService;
@@ -67,23 +68,36 @@ public class IndexController extends BaseController {
 			if (user.getPassword().equals(
 					CryptUtils.getEncryptString(userEntity.getPassword()))) {
 
-				BigInteger order = indexService.findUniqueBySql("select ifnull(max(um_order),0) from user_menu where user_id=?",user.getId());
+				Integer id = user.getId();
 				List<UserMenuEntity> userMenus = indexService
-						.findListBySql("select * from user_menu where menu_id in (1,2)");
+						.findListBySql("select * from user_menu where user_id=?",id);
+				List<UserAcTempEntity> userAcTemps = indexService.findListByHql("from UserAcTempEntity where userId=?", id);
+				if (userAcTemps==null||userAcTemps.isEmpty()) {
+					List<ACTempEntity> list = indexService.findListByProperty(ACTempEntity.class);
+					for (ACTempEntity acTempEntity : list) {
+						UserAcTempEntity userAcTempEntity=new UserAcTempEntity();
+						userAcTempEntity.setAcStatus(0);
+						userAcTempEntity.setTempId(acTempEntity.getId());
+						userAcTempEntity.setUserId(id);
+						indexService.save(userAcTempEntity);
+					}
+				}
+				int i=0;
 				if (userMenus == null || userMenus.isEmpty()) {
 
 					List<MenuEntity> menus = indexService.findListByProperty(
 							MenuEntity.class);
 					for (MenuEntity menuEntity : menus) {
 						
-						UserMenuEntity userMenuEntity = indexService.findUniqueBySql("select * from user_menu where menu_id=? and user_id=?",menuEntity.getId(),user.getId());
+						UserMenuEntity userMenuEntity = indexService.findUniqueBySql("select * from user_menu where menu_id=? and user_id=?",menuEntity.getId(),id);
 						if (userMenuEntity==null) {
 							userMenuEntity = new UserMenuEntity();
 							userMenuEntity.setIsShow(1);
 							userMenuEntity.setMenuId(menuEntity.getId());
-							userMenuEntity.setUserId(user.getId());
-							userMenuEntity.setUmOrder(order.intValue()+1);
+							userMenuEntity.setUserId(id);
+							userMenuEntity.setUmOrder(i);
 							indexService.save(userMenuEntity);
+							i++;
 						}
 
 					}

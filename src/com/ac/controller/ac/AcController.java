@@ -36,6 +36,11 @@ public class AcController extends BaseController {
 		} else {
 
 			commonMapping("ac", acService, request);
+			List<UserAcTempEntity> userAcTempEntities = acService.findListByHql("from AcLogEntity where acDate=str_to_date(?,'%Y-%m-%d') ",  new Date());
+			if(userAcTempEntities.size()==0){
+				
+				acService.updateBySql("update USER_AC_TEMP set ac_status=0 where  user_id=?",sysUser.getId());
+			}
 			return "ac/ac";
 		}
 	}
@@ -60,16 +65,19 @@ public class AcController extends BaseController {
 			return "redirect:/";
 		} else {
 
-			List<UserAcTempEntity> userAcTemps = acService.findListByHql("from UserAcTempEntity where userId=? and acStatus=0", sysUser.getId());
-			List<ACTempEntity> tempEntities = new ArrayList<>();
+			Integer userId = sysUser.getId();
+			List<UserAcTempEntity> userAcTemps = acService.findListByHql("from UserAcTempEntity where userId=? and acStatus=0 order by tempId asc", userId);
+			List<ACTempEntity> xfTempEntities = new ArrayList<>();
+			List<ACTempEntity> rzTempEntities = new ArrayList<>();
 			double out = acService
 					.findUniqueBySql(
 							"select ifnull(sum(ac_amount),0) from ac_log where user_id=? and ac_type=0 and ac_date=str_to_date(?,'%Y-%m-%d')",
-							sysUser.getId(), new Date());// 今天消费
+							userId, new Date());// 今天消费
 			double in = acService
 					.findUniqueBySql(
 							"select ifnull(sum(ac_amount),0) from ac_log where user_id=? and ac_type=1 and ac_date=str_to_date(?,'%Y-%m-%d')",
-							sysUser.getId(), new Date());// 今天收入
+							userId, new Date());// 今天收入
+			
 			// select * from ac_log where
 			// date_format(ac_date,'%Y-%m')=date_format(DATE_SUB(curdate(),
 			// INTERVAL 1 MONTH),'%Y-%m') ;
@@ -85,9 +93,14 @@ public class AcController extends BaseController {
 
 				ACTempEntity acTempEntity = acService.findUniqueByProperty(
 						ACTempEntity.class, "id", userAcTempEntity.getTempId());
-				tempEntities.add(acTempEntity);
+				if(acTempEntity.getTxType()==0){
+				xfTempEntities.add(acTempEntity);
+				}else{
+					rzTempEntities.add(acTempEntity);
+				}
 			}
-			request.setAttribute("tempEntities", tempEntities);
+			request.setAttribute("xfTempEntities", xfTempEntities);
+			request.setAttribute("rzTempEntities", rzTempEntities);
 			return "ac/accounting";
 		}
 
@@ -127,8 +140,7 @@ public class AcController extends BaseController {
 				acLogEntities.add(acLogEntity);
 			}
 			if(ids.length>0){
-			acService.batchSave(acLogEntities);
-			acService.updateBySqlInIds("update USER_AC_TEMP set ac_status=1 where temp_id in(:ids) and user_id="+sysUser.getId(), ids);;
+			acService.addAcLog(acLogEntities, ids, sysUser.getId());
 			}
 			return 0;
 		} catch (Exception e) {
@@ -142,9 +154,7 @@ public class AcController extends BaseController {
 	public int afreshAcLog(HttpServletRequest request) {
 		try {
 			UserEntity sysUser = getSysUser(request);
-			
-			acService.deleteBySql("delete from ac_log where user_id=? and ac_date=str_to_date(?,'%Y-%m-%d')", sysUser.getId(),new Date());
-			acService.updateBySql("update USER_AC_TEMP set ac_status=0 where  user_id=?",sysUser.getId());
+			acService.afreshAcLog(sysUser.getId());
 			return 0;
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -49,6 +49,8 @@ public class UserController extends BaseController {
 			userEntity.setPassword(CryptUtils.getEncryptString(userEntity
 					.getPassword()));
 			userServise.save(userEntity);
+			
+			
 			return 0;
 		} catch (Exception e) {
 			e.printStackTrace();

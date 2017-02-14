@@ -20,7 +20,8 @@
 				$("#msg").text("两次输入的密码不一样！");	
 				return ;
 			}
-			submit();
+			var index = layer.load();
+			submit(index);
 		});
 		$("#name").keyup( function() {
 			passwordValidate();
@@ -79,8 +80,8 @@
 		});
 		
 	}
-	function submit() {
-		var index = layer.load();
+	function submit(index) {
+
 		$.ajax({
 			type : "POST",
 			url : "${base}addUser",
