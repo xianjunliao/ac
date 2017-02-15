@@ -112,27 +112,29 @@
 	<div id="changeAc">
 		<table id="gridAc">
 			<c:forEach items="${xfTempEntities}" var="t">
-					<tr>
-						<td>今日</td>
-						<td><input type="hidden" id="acCode" value="${t.txCode}"><input
-							type="hidden" id="acType" value="${t.txType}"><input
-							type="hidden" id="acType" value="${t.id}"><span
-							style="color: red" id="acName">${t.txName}</span></td>
-						<td>消费了</td>
-						<td><input id="acAmount" type="text" value="0.00" /></td>
-						<td>元</td>
-					</tr>
+				<tr>
+					<td>今日</td>
+					<td><input type="hidden" id="acCode" value="${t.txCode}"><input
+						type="hidden" id="acType" value="${t.txType}"><input
+						type="hidden" id="acType" value="${t.id}"><span
+						style="color: red" id="acName">${t.txName}</span></td>
+					<td>消费了</td>
+					<td><input id="acAmount" type="text" value="0.00" /></td>
+					<td>元</td>
+				</tr>
 			</c:forEach>
 
 			<c:forEach items="${rzTempEntities}" var="t">
-					<tr height="50px">
-						<td>今日</td>
-						<td><input type="hidden" id="acCode" value="${t.txCode}"><span
-							style="color: green" id="acName">${t.txName}</span></td>
-						<td>入账了</td>
-						<td><input id="acAmount" type="text" value="0.00" /></td>
-						<td>元</td>
-					</tr>
+				<tr height="50px">
+					<td>今日</td>
+					<td><input type="hidden" id="acCode" value="${t.txCode}"><input
+						type="hidden" id="acType" value="${t.txType}"><input
+						type="hidden" id="acType" value="${t.id}"><span
+						style="color: red" id="acName">${t.txName}</span></td>
+					<td>入账了</td>
+					<td><input id="acAmount" type="text" value="0.00" /></td>
+					<td>元</td>
+				</tr>
 			</c:forEach>
 		</table>
 	</div>
