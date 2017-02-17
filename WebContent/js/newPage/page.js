@@ -20,11 +20,10 @@
 			
 			$(".menus").css("top", "2%");
 		}
-		$(".menu").hover(function() {
+		$(".menu.info").hover(function() {
 			$(this).css("opacity", "1");
 			$(this).css("cursor", "pointer");
 		}, function() {
 			$(this).css("opacity", "0.5");
 		});
-
 	});

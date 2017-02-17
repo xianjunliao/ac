@@ -53,18 +53,33 @@
 <link rel="stylesheet" type="text/css"
 	href="${base }css/newPage/page.css" />
 <script type="text/javascript">
+	
 </script>
 
 </head>
 <body>
 	<div class="page">
 
-		<div class="menus">
+		<div class="ac_menus">
 			<div class="menu">1</div>
-			<div class="menu">2</div>
-			<div class="menu">3</div>
-			<div class="menu">4</div>
-			<div class="menu">5</div>
+			<div class="menu img left two"></div>
+			<div class="menu hide">3</div>
+			<div class="menu hide">4</div>
+			<div class="menu img right">5</div>
+			<div class="menu ">6</div>
+			<div class="menu ">7</div>
+			<div class="menu img left eight"></div>
+			<div class="menu plan">9-10</div>
+	
+			<div class="menu  img right">11</div>
+			<div class="menu ">12</div>
+			<div class="menu ">13</div>
+			<div class="menu img left fourteen"></div>
+			<div class="menu hide">15</div>
+			<div class="menu hide">16</div>
+			<div class="menu img right">17</div>
+			<div class="menu">18</div>
+
 		</div>
 	</div>
 </body>

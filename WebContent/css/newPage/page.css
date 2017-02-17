@@ -11,35 +11,67 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	margin: 0;
 	background-color: #FFFFFF;
-    background-size:100% 100%;
+	background-size: 100% 100%;
 }
-div{
-	
-	    border:1px solid green;
-		margin: 5px 5px 5px 5px;
-} 
-.page{
 
+div {
+	border: 1px solid window;
 	margin: 5px 5px 5px 5px;
-	height: 98%;
-	overflow-x:auto;
 }
 
-.menus{
-    position: relative;
-    width: 80%;
-    left: 10%;
-    overflow:hideen;  
-    border: none;
+.page {
+	margin: 5px 5px 5px 5px;
+	width: 100%;
+	height: 100%;
+	overflow-x: auto;
 }
-.menu{
+
+.ac_menus {
+	position: relative;
+	left: 25%;
+	top: 20%;
+	width: 50%;
+	height: 50%;
+	overflow-y: auto;
+}
+
+.menu {
 	position: relative;
 	float: left;
-	width: 200px;
-	height: 120px;
+	width: 100px;
+	height: 96px;
 	text-align: center;
-    line-height: 120px;
-    opacity: 0.5;
-    background-color: green;
-  
+	line-height: 100px;
+	opacity: 0.5;
+	background-color: green;
+}
+
+.menu.plan {
+	width: 212px;
+	height: 96px;
+}
+
+.menu.hide {
+	border-color: window;
+	background-color: window;
+}
+
+.menu.img {
+	margin: 5px 0px 5px 0px;
+	background-color: window;
+	opacity: 1;
+}
+
+.menu.img.left.two {
+	background-image: url("../../img/left1.png");
+}
+
+.menu.img.left.eight {
+	margin-left:-5px;
+	background-image: url("../../img/left2.png");
+}
+
+.menu.img.left.fourteen {
+	margin-left:-5px;
+	background-image: url("../../img/left3.png");
 }
