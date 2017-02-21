@@ -53,12 +53,10 @@
 <script type="text/javascript">
 	$(function() {
 		$(".box").mouseover(function() {
-			console.log("??");
 			$(".tm").css("display", "none");
 			$("#clock").show();
 		});
 		$(".box").mouseout(function() {
-			console.log("?????");
 			$("#clock").hide();
 			$(".tm").css("display", "block");
 		});
@@ -67,7 +65,7 @@
 
 </head>
 <body>
-	<div class="flash4" style="margin-top: 50px">
+	<div class="flash4" >
 		<ul>
 			<li class="first">
 				<div class="imgTop">
