@@ -49,6 +49,7 @@ a,img{border:0;}
     opacity: 1;
 }
 #third{
+	border-color:#000;
     position: absolute;
     width: 100px;
     height: 50px;

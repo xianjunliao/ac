@@ -49,38 +49,142 @@
 <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
 <META HTTP-EQUIV="Expires" CONTENT="0">
 <script src="${base}js/common/jquery-1.11.2.min.js"></script>
-<script src="${base}js/newPage/page.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="${base }css/newPage/page.css" />
+<link href="${base}css/newPage/sfq.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript">
-	
+	$(function() {
+		$(".box").mouseover(function() {
+			console.log("??");
+			$(".tm").css("display", "none");
+			$("#clock").show();
+		});
+		$(".box").mouseout(function() {
+			console.log("?????");
+			$("#clock").hide();
+			$(".tm").css("display", "block");
+		});
+	});
 </script>
 
 </head>
 <body>
-	<div class="page">
+	<div class="flash4" style="margin-top: 50px">
+		<ul>
+			<li class="first">
+				<div class="imgTop">
+					<div class="box">
+						<canvas id="clock" width="538" height="505"></canvas>
+						<img src="${base}images/timeb.jpg" width="538" height="505" alt=""
+							class="tm" />
+					</div>
+				</div>
 
-		<div class="ac_menus">
-			<div class="menu">1</div>
-			<div class="menu img left two"></div>
-			<div class="menu hide">3</div>
-			<div class="menu hide">4</div>
-			<div class="menu img right">5</div>
-			<div class="menu ">6</div>
-			<div class="menu ">7</div>
-			<div class="menu img left eight"></div>
-			<div class="menu plan">9-10</div>
-	
-			<div class="menu  img right">11</div>
-			<div class="menu ">12</div>
-			<div class="menu ">13</div>
-			<div class="menu img left fourteen"></div>
-			<div class="menu hide">15</div>
-			<div class="menu hide">16</div>
-			<div class="menu img right">17</div>
-			<div class="menu">18</div>
-
-		</div>
+				<div class="imgCen">A day is a miniature of eternity</div>
+				<div class="imgBot">
+					<p class="bt_1">My time</p>
+					<p class="bt_2">
+						<span><a href="#">Schedule today</a></span><span><a
+							href="#">Major event</a></span><span><a href="#">Learn today</a></span>
+					</p>
+				</div>
+			</li>
+			<li>
+				<div class="imgTop">
+					<img src="${base}images/crane1.jpg" width="538" height="505" alt="" />
+				</div>
+				<div class="imgCen">蒂芙尼为你吟唱一曲自然颂</div>
+				<div class="imgBot">
+					<p class="bt_1">Crane</p>
+					<p class="bt_2">
+						<span><a href="#">Schedule today</a></span><span><a
+							href="#">Major event</a></span><span><a href="#">Learn today</a></span>
+					</p>
+				</div>
+			</li>
+			<li>
+				<div class="imgTop">
+					<img src="${base}images/cf.jpg" width="538" height="505" alt="" />
+				</div>
+				<div class="imgCen">Time is money</div>
+				<div class="imgBot">
+				<p class="bt_1">Property</p>
+					<p class="bt_2">
+						<span><a href="#">Book today</a></span><span><a href="#">Economic
+								situation</a></span><span><a href="#">Statistical summary</a></span>
+					</p>
+				</div>
+			</li>
+			<li>
+				<div class="imgTop">
+					<img src="${base}images/ruili_img4.jpg" width="538" height="505"
+						alt="" />
+				</div>
+				<div class="imgCen">《ar》刘海造型 女孩只需这样即刻焕然一新</div>
+				<div class="imgBot">
+					<a href=""><p class="bt_1">服饰</p>
+						<p class="bt_2">
+							<span>封面明星故事</span><span>2015春夏趋势</span><span>我爱海淘</span>
+						</p></a>
+				</div>
+			</li>
+			<li>
+				<div class="imgTop">
+					<img src="${base}images/ruili_img5.jpg" width="538" height="505"
+						alt="" />
+				</div>
+				<div class="imgCen">电影×大明星 见证传奇从戛纳诞生</div>
+				<div class="imgBot">
+					<a href=""><p class="bt_1">服饰</p>
+						<p class="bt_2">
+							<span>封面明星故事</span><span>2015春夏趋势</span><span>我爱海淘</span>
+						</p></a>
+				</div>
+			</li>
+			<li>
+				<div class="imgTop">
+					<img src="${base}images/ruili_img6.jpg" width="538" height="505"
+						alt="" />
+				</div>
+				<div class="imgCen">重返20岁试用周</div>
+				<div class="imgBot">
+					<a href=""><p class="bt_1">服饰</p>
+						<p class="bt_2">
+							<span>封面明星故事</span><span>2015春夏趋势</span><span>我爱海淘</span>
+						</p></a>
+				</div>
+			</li>
+			<li class="fast">
+				<div class="imgTop">
+					<img src="${base}images/ruili_img7.jpg" width="538" height="505"
+						alt="" />
+				</div>
+				<div class="imgCen">玩美女孩盖天天 阳光女神进阶攻略</div>
+				<div class="imgBot">
+					<a href=""><p class="bt_1">服饰</p>
+						<p class="bt_2">
+							<span>封面明星故事</span><span>2015春夏趋势</span><span>我爱海淘</span>
+						</p></a>
+				</div>
+			</li>
+		</ul>
 	</div>
+	<script src="${base}js/newPage/sfq.js" type="text/javascript"></script>
+	<script type="text/javascript"
+		src="${base}js/newPage/clock-canvas.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$(".tm").hide();
+			$("#clock").drawClock(
+			//{
+			// hCol: 'xxx',// 时针颜色
+			// mCol: 'xxx', // 时针颜色
+			// sCol: 'xxx', // 时针颜色
+			// isNumCol: 'xxx', // 数字所在的点颜色
+			// noNumCol: 'xxx', // 非数字所在的点颜色
+			// dCol: 'xxx', // 中心圈颜色
+			//}
+			);
+
+		});
+	</script>
 </body>
 </html>
