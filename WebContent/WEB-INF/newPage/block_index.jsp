@@ -145,7 +145,7 @@
 				<div class="imgTop">
 					<img src="${base}images/dy1.jpg" width="538" height="505" alt="" />
 				</div>
-				<div class="imgCen">《ar》刘海造型 女孩只需这样即刻焕然一新</div>
+				<div class="imgCen">看电影就是看认生。</div>
 				<div class="imgBot">
 					<p class="bt_1">电影</p>
 					<p class="bt_2">
