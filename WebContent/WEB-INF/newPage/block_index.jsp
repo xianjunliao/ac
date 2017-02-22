@@ -54,13 +54,13 @@
 	$(function() {
 		$(".box").mouseover(function() {
 			console.log("??");
-			$(".tm").css("display", "none");
+			$(".tm").hide();
 			$("#clock").show();
 		});
 		$(".box").mouseout(function() {
 			console.log("?????");
 			$("#clock").hide();
-			$(".tm").css("display", "block");
+			$(".tm").show();
 		});
 	});
 </script>
