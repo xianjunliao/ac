@@ -58,8 +58,33 @@
 
 		// 		mouseoverAndout("accounting","clock","time");
 		// 		mouseoverAndout("major","clock","time");
+		if (os.isPc) {
+			alert("pc");
+		}
+		if (os.isAndroid) {
+			alert("Android");
+		}
+		if (os.isPhone) {
+			location.href = "${base}xiala";
+		}
 	});
-
+	var os = function() {
+		var ua = navigator.userAgent, isWindowsPhone = /(?:Windows Phone)/
+				.test(ua), isSymbian = /(?:SymbianOS)/.test(ua)
+				|| isWindowsPhone, isAndroid = /(?:Android)/.test(ua), isFireFox = /(?:Firefox)/
+				.test(ua), isChrome = /(?:Chrome|CriOS)/.test(ua), isTablet = /(?:iPad|PlayBook)/
+				.test(ua)
+				|| (isAndroid && !/(?:Mobile)/.test(ua))
+				|| (isFireFox && /(?:Tablet)/.test(ua)), isPhone = /(?:iPhone)/
+				.test(ua)
+				&& !isTablet, isPc = !isPhone && !isAndroid && !isSymbian;
+		return {
+			isTablet : isTablet,
+			isPhone : isPhone,
+			isAndroid : isAndroid,
+			isPc : isPc
+		};
+	}();
 	function mouseoverAndout(id, showId, hideId) {
 		$("#" + id).mouseover(function() {
 			$("#" + hideId).css("display", "none");
@@ -102,7 +127,7 @@
 				<div class="imgBot ">
 					<p class="bt_1">时间</p>
 					<p class="bt_2 ">
-						<span><a href="#" class="md-trigger md-setperspective"
+						<span><a href="${base}xiala" class="md-trigger md-setperspective"
 							data-modal="modal-13" id="accounting">今日日程</a></span><span><a
 							href="#" class="md-trigger md-setperspective"
 							data-modal="modal-13" id="major">今日历程</a></span>
@@ -118,10 +143,11 @@
 					<p class="bt_1">财产</p>
 					<p class="bt_2">
 						<span><a class="md-trigger md-setperspective"
-							data-modal="modal-13" href="#">支和入</a></span><span><a class="md-trigger md-setperspective"
-							data-modal="modal-13" href="#">查看</a></span><span><a
-							class="md-trigger md-setperspective"
-							data-modal="modal-13" href="#">统计</a></span>
+							data-modal="modal-13" href="#">支和入</a></span><span><a
+							class="md-trigger md-setperspective" data-modal="modal-13"
+							href="#">查看</a></span><span><a
+							class="md-trigger md-setperspective" data-modal="modal-13"
+							href="#">统计</a></span>
 					</p>
 				</div>
 			</li>
@@ -134,10 +160,11 @@
 					<p class="bt_1">音乐</p>
 					<p class="bt_2">
 						<span><a class="md-trigger md-setperspective"
-							data-modal="modal-13" href="#">喜欢</a></span><span><a class="md-trigger md-setperspective"
-							data-modal="modal-13" href="#">链接</a></span><span><a
-							class="md-trigger md-setperspective"
-							data-modal="modal-13" href="#">收藏</a></span>
+							data-modal="modal-13" href="#">喜欢</a></span><span><a
+							class="md-trigger md-setperspective" data-modal="modal-13"
+							href="#">链接</a></span><span><a
+							class="md-trigger md-setperspective" data-modal="modal-13"
+							href="#">收藏</a></span>
 					</p>
 				</div>
 			</li>
@@ -150,10 +177,11 @@
 					<p class="bt_1">电影</p>
 					<p class="bt_2">
 						<span><a class="md-trigger md-setperspective"
-							data-modal="modal-13" href="#">喜欢</a></span><span><a class="md-trigger md-setperspective"
-							data-modal="modal-13" href="#">链接</a></span><span><a
-							class="md-trigger md-setperspective"
-							data-modal="modal-13" href="#">收藏</a></span>
+							data-modal="modal-13" href="#">喜欢</a></span><span><a
+							class="md-trigger md-setperspective" data-modal="modal-13"
+							href="#">链接</a></span><span><a
+							class="md-trigger md-setperspective" data-modal="modal-13"
+							href="#">收藏</a></span>
 					</p>
 				</div>
 			</li>

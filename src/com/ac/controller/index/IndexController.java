@@ -26,15 +26,27 @@ public class IndexController extends BaseController {
 	@Resource
 	public IndexService indexService;
 
+//	@RequestMapping("/")
+//	public String goTask(HttpServletRequest request) {
+//		commonMapping("home",indexService,request);
+//		return "/index";
+//	}
 	@RequestMapping("/")
-	public String goTask(HttpServletRequest request) {
-		commonMapping("home",indexService,request);
-		return "/index";
-	}
-	@RequestMapping("/page")
 	public String goPage(HttpServletRequest request) {
 		
 		return "newPage/block_index";
+	}
+	
+	@RequestMapping("/phone")
+	public String goPhone(HttpServletRequest request) {
+		
+		return "newPage/phone_index";
+	}
+	
+	@RequestMapping("/xiala")
+	public String goXiala(HttpServletRequest request) {
+		
+		return "newPage/xiala_index";
 	}
 	@RequestMapping("/outLogin")
 	public String outLogin(HttpServletRequest request) {
