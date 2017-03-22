@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -14,18 +12,11 @@ import java.util.Map;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 
-import com.ac.entity.MQEntity;
-import com.ac.entity.MenuEntity;
-import com.ac.entity.SubmenuEntity;
-import com.ac.entity.UserEntity;
-import com.ac.entity.UserMenuEntity;
-import com.ac.service.common.CommonService;
 import com.ac.util.StringEscapeEditor;
 
 public class BaseController {
@@ -118,16 +109,16 @@ public class BaseController {
 		is.close();
 	}
 	
-	/**
-	 * 获取当前用户
-	 * @author jzc
-	 * @param request
-	 * @return
-	 */
-	public UserEntity getSysUser(HttpServletRequest request){
-		HttpSession session = request.getSession();
-		return ((UserEntity) session.getAttribute("ac"));
-	}
+//	/**
+//	 * 获取当前用户
+//	 * @author jzc
+//	 * @param request
+//	 * @return
+//	 */
+//	public UserEntity getSysUser(HttpServletRequest request){
+//		HttpSession session = request.getSession();
+//		return ((UserEntity) session.getAttribute("ac"));
+//	}
 	
 	
 	/**
@@ -147,52 +138,52 @@ public class BaseController {
 		out.close();
 		is.close();
 	}
-	public void commonMapping(String menuCode,CommonService commonService,HttpServletRequest request) {
-		UserEntity sysUser = getSysUser(request);
-		List<MenuEntity> menus = new ArrayList<>();
-		Map<String, Object> map = new HashMap<>();
-		if (sysUser != null) {
-			map = new HashMap<>();
-			List<UserMenuEntity> userMenuEntities = commonService.findListByHql("from UserMenuEntity where userId=? and isShow=? order by umOrder asc ", sysUser.getId(),1);
-			for (UserMenuEntity userMenuEntity : userMenuEntities) {
-				MenuEntity menuEntity = commonService.findUniqueByProperty(
-						MenuEntity.class, "id", userMenuEntity.getMenuId());
-
-				menus.add(menuEntity);
-			}
-
-			request.setAttribute("menus", menus);
-			if (menus.isEmpty()) {
-				map = new HashMap<>();
-				map.put("menuCode", "home");
-				menus = commonService.findListByProperty(MenuEntity.class, map);
-				request.setAttribute("menus", menus);
-			}
-			List<MenuEntity> ms=new ArrayList<>();
-			List<UserMenuEntity> userMenuEntities2 = commonService.findListByHql("from UserMenuEntity where userId=? order by umOrder asc ", sysUser.getId());
-			for (UserMenuEntity userMenuEntity : userMenuEntities2) {
-				MenuEntity menuEntity = commonService.findUniqueByProperty(MenuEntity.class, "id", userMenuEntity.getMenuId());
-				if (!menuEntity.getMenuCode().equals("home")) {
-					MenuEntity newMenuEntity=new MenuEntity();
-					String menuName = userMenuEntity.getIsShow()==0?"显示"+menuEntity.getMenuName()+"菜单":"隐藏"+menuEntity.getMenuName()+"菜单";
-					newMenuEntity.setMenuName(menuName);
-					newMenuEntity.setMenuCode(menuEntity.getMenuCode());
-					ms.add(newMenuEntity);
-				}
-			}
-			
-			request.setAttribute("ms", ms);
-			request.setAttribute("username", sysUser.getName());
-		} else {
-			map.put("menuCode", "home");
-			menus = commonService.findListByProperty(MenuEntity.class, map);
-			request.setAttribute("menus", menus);
-
-		}
-		List<SubmenuEntity> submenus = commonService.findListByProperty(SubmenuEntity.class,"pCode",menuCode);
-		request.setAttribute("submenus", submenus);
-		List<MQEntity> mqs = commonService.findListByProperty(MQEntity.class);
-		request.setAttribute("mqs", mqs);
-		
-	}
+//	public void commonMapping(String menuCode,CommonService commonService,HttpServletRequest request) {
+//		UserEntity sysUser = getSysUser(request);
+//		List<MenuEntity> menus = new ArrayList<>();
+//		Map<String, Object> map = new HashMap<>();
+//		if (sysUser != null) {
+//			map = new HashMap<>();
+//			List<UserMenuEntity> userMenuEntities = commonService.findListByHql("from UserMenuEntity where userId=? and isShow=? order by umOrder asc ", sysUser.getId(),1);
+//			for (UserMenuEntity userMenuEntity : userMenuEntities) {
+//				MenuEntity menuEntity = commonService.findUniqueByProperty(
+//						MenuEntity.class, "id", userMenuEntity.getMenuId());
+//
+//				menus.add(menuEntity);
+//			}
+//
+//			request.setAttribute("menus", menus);
+//			if (menus.isEmpty()) {
+//				map = new HashMap<>();
+//				map.put("menuCode", "home");
+//				menus = commonService.findListByProperty(MenuEntity.class, map);
+//				request.setAttribute("menus", menus);
+//			}
+//			List<MenuEntity> ms=new ArrayList<>();
+//			List<UserMenuEntity> userMenuEntities2 = commonService.findListByHql("from UserMenuEntity where userId=? order by umOrder asc ", sysUser.getId());
+//			for (UserMenuEntity userMenuEntity : userMenuEntities2) {
+//				MenuEntity menuEntity = commonService.findUniqueByProperty(MenuEntity.class, "id", userMenuEntity.getMenuId());
+//				if (!menuEntity.getMenuCode().equals("home")) {
+//					MenuEntity newMenuEntity=new MenuEntity();
+//					String menuName = userMenuEntity.getIsShow()==0?"显示"+menuEntity.getMenuName()+"菜单":"隐藏"+menuEntity.getMenuName()+"菜单";
+//					newMenuEntity.setMenuName(menuName);
+//					newMenuEntity.setMenuCode(menuEntity.getMenuCode());
+//					ms.add(newMenuEntity);
+//				}
+//			}
+//			
+//			request.setAttribute("ms", ms);
+//			request.setAttribute("username", sysUser.getName());
+//		} else {
+//			map.put("menuCode", "home");
+//			menus = commonService.findListByProperty(MenuEntity.class, map);
+//			request.setAttribute("menus", menus);
+//
+//		}
+//		List<SubmenuEntity> submenus = commonService.findListByProperty(SubmenuEntity.class,"pCode",menuCode);
+//		request.setAttribute("submenus", submenus);
+//		List<MQEntity> mqs = commonService.findListByProperty(MQEntity.class);
+//		request.setAttribute("mqs", mqs);
+//		
+//	}
 }

@@ -71,7 +71,7 @@
 <script type="text/javascript" src="${base}js/layer/layer.js"></script>
 <link rel="stylesheet" type="text/css" href="${base }css/rigth/default.css" />
 
-<title>学会管理自己</title>
-<link rel="shortcut icon" href="${base}img/me.ico"/>
+<title>记忆宫殿</title>
+<link rel="shortcut icon" href="${base}img/mp.ico"/>
 
 

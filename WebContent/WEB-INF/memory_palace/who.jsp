@@ -10,13 +10,14 @@
 <META HTTP-EQUIV="Expires" CONTENT="0">
 
 <script type="text/javascript">
-	$(function() {
-
-	});
+	
 </script>
 
 </head>
 <body>
-<h2>查账开发中......</h2>
+	<div id="centrer">
+		<h1><a>Who are you?</a></h1>
+	</div>
+
 </body>
 </html>
