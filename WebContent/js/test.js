@@ -22,6 +22,7 @@
 	function tree(data) {
 		for (var i = 0; i < data.length; i++) {
 			var data2 = data[i];
+			var hi = data[i].code;
 			if (data[i].icon == "icon-th") {
 				$("#rootUL").append(
 						"<li data-name='" + data[i].code + "'><span><i class='"
@@ -36,7 +37,7 @@
 				}
 				$("li[data-name='" + data[i].parentCode + "'] > ul").append(
 						"<li data-name='" + data[i].code + "'>"
-								+ "<span><a onClick='bdfy(hi)'>" + "<i class='" + data[i].icon
+								+ "<span><a onClick='bdfy("+hi+")'>" + "<i class='" + data[i].icon
 								+ "'></i> " + data[i].name + "</a></span>"
 								+ "</li>");
 			}
