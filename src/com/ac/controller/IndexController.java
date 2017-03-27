@@ -20,7 +20,7 @@ public class IndexController extends BaseController {
 	@RequestMapping("/")
 	public String goPage(HttpServletRequest request) {
 		
-		return "memory_palace/who";
+		return "memory_tree/index";
 	}
 	
 	
