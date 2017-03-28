@@ -446,6 +446,6 @@ public class EntityFactory {
 	public static void main(String[] args) {
 
 		EntityFactory entityFactory = new EntityFactory();
-		entityFactory.produceClass("ac_log", "src\\com\\ac\\entity\\", "AcLog");
+		entityFactory.produceClass("menu", "src\\com\\ac\\entity\\", "Menu");
 	}
 }
