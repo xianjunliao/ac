@@ -19,10 +19,13 @@
 <!-- ace styles -->
 <link rel="stylesheet" href="tree_files/ace.min.css">
 <script type="text/javascript">
+	
 </script>
 </head>
 <body>
-<input type="hidden" id="menu1" value="${menuJson}" />
+	<input type="hidden" id="menu1" value="${menuJson}" />
+	<input type="hidden" id="menu2" value="${menu1Json}" />
+	<input type="hidden" id="menu3" value="${menu2Json}" />
 	<table border="1" width="100%" height="100%">
 		<tr height="5%">
 			<td></td>
@@ -47,17 +50,21 @@
 											<div class="tree-folder-header">
 												<i class="icon-folder-close"></i>
 												<div class="tree-folder-name"></div>
+												<div class="tree-folder-code"></div>
 											</div>
 											<div class="tree-folder-content"></div>
 											<div class="tree-loader" style="display: none;"></div>
 										</div>
 										<div class="tree-item" style="display: none;">
 											<div class="tree-item-name"></div>
+											<div class="tree-item-code"></div>
 										</div>
 										<c:forEach items="${menu}" var="m">
 											<div class="tree-folder" style="display: block;">
 												<div class="tree-folder-header">
 													<i class="icon-folder-close "></i>
+													<div class="tree-folder-code">
+														${m.code}</div>
 													<div class="tree-folder-name">${m.name}</div>
 												</div>
 												<div class="tree-folder-content"></div>
@@ -90,17 +97,17 @@
 	<script src="tree_files/ace.min.js"></script>
 	<script type="text/javascript">
 		jQuery(function($) {
-						$('#tree2')
-								.ace_tree(
-										{
-											dataSource : treeDataSource2,
-											loadingHTML : '<div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div>',
-											'open-icon' : 'icon-folder-open',
-											'close-icon' : 'icon-folder-close',
-											'selectable' : false,
-											'selected-icon' : null,
-											'unselected-icon' : null
-										});
+			$('#tree2')
+					.ace_tree(
+							{
+								dataSource : treeDataSource2,
+								loadingHTML : '<div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div>',
+								'open-icon' : 'icon-folder-open',
+								'close-icon' : 'icon-folder-close',
+								'selectable' : false,
+								'selected-icon' : null,
+								'unselected-icon' : null
+							});
 
 		});
 	</script>

@@ -22,7 +22,7 @@ DataSourceTree.prototype.data = function(options, callback) {
 	}
 
 	if ($data != null)// this setTimeout is only for mimicking some random
-						// delay
+		// delay
 		setTimeout(function() {
 			callback({
 				data : $data
@@ -33,60 +33,67 @@ DataSourceTree.prototype.data = function(options, callback) {
 	// but you can retrieve your data dynamically from a server using ajax call
 	// checkout examples/treeview.html and examples/treeview.js for more info
 };
-var a = $('#menu1').val();
+var menu1 = $('#menu1').val();
+var menu2 = $('#menu2').val();
+var menu3 = $('#menu3').val();
+var json = eval('(' + menu1 + ')');
+var json2 = eval('(' + menu2 + ')');
+var json3 = eval('(' + menu3 + ')');
+//console.log(json);
+//console.log(json2);
+//console.log(json3);
+var tree_data_2 = json;
+//console.log(tree_data_2);
+var m2 = [];
+var m3 = [];
+for ( var o in tree_data_2) {
+	for ( var i in json2) {
+		console.log("text:" + tree_data_2[o].name + " value:"
+				+ tree_data_2[o].code);
 
-console.log(a);
+		var code = tree_data_2[o].code;
+		if (code == json2[i].menuCode) {
 
-var tree_data_2 = {
-	'YYXX' : {
-		name : '英语学习',
-		type : 'folder',
-		'icon-class' : 'red'
-	},
-	'QTXX' : {
-		name : '其他学习',
-		type : 'folder',
-		'icon-class' : 'red'
-	}
-};
-console.log(tree_data_2);
+			var item = json2[i].code + ":" + {
+				code : json2[i].code,
+				name : json2[i].name,
+				type : json2[i].type,
+				'icon-class' : json2[i].colour
+			};
+			m2.push(item);
 
-tree_data_2['YYXX']['additionalParameters'] = {
-	'children' : {
-		'dcsj' : {
-			name : '单词速记',
-			type : 'folder',
-			'icon-class' : 'pink'
-		},
-		'yfsj' : {
-			name : '语法速记',
-			type : 'folder',
-			'icon-class' : 'pink'
+			for ( var z in json3) {
+				if (json2[i].code == json3[z].menu1Code) {
+					var code3 = "'" + json3[z].code + "'";
+					var type = "bdfy";
+					if (json3[z].baiduType == "BAIKE") {
+
+						type = "bdbk";
+					}
+
+					var item = json2[i].code + ":" + {
+						code : json2[i].code,
+						name : json2[i].name,
+						type : json2[i].type
+					};
+					m3.push(item);
+
+				}
+
+			}
+			console.log(m3);
+			tree_data_2[code]['additionalParameters']['children'][json2[i].code]['additionalParameters'] = {
+
+					'children' : [ m3]
+				};
 		}
+		console.log(m2);
+		tree_data_2[code]['additionalParameters'] = {
+			'children' : m2
+		};
 	}
-};
-tree_data_2['YYXX']['additionalParameters']['children']['dcsj']['additionalParameters'] = {
-	'children' : [
-			{
-				name : '<i class="icon-file-text brown"></i> <a onClick="bdfy('
-						+ "'hi'" + ')"> hi:你好</a>',
-				type : 'item'
-			},
-			{
-				name : '<i class="icon-file-text brown"></i><a onClick="bdfy('
-						+ "'hello'" + ')">  hello:你好</a>',
-				type : 'item'
-			}, ]
-};
-tree_data_2['YYXX']['additionalParameters']['children']['yfsj']['additionalParameters'] = {
-	'children' : [
-			{
-				name : '<i class="icon-file-text brown"></i> <a onClick="bdbk('
-						+ "'be动词'" + ')"> be动词</a>',
-				type : 'item'
-			}, ]
-};
 
+}
 var treeDataSource2 = new DataSourceTree({
 	data : tree_data_2
 });
