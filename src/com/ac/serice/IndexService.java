@@ -9,6 +9,6 @@ import com.ac.entity.PoolEntity;
 public interface IndexService{
 
 	public List<MenuEntity> getAll();
-	public List<Menu1Entity> getMenu1All();
-	public List<PoolEntity> getPoolAll();
+	public List<Menu1Entity> getMenu1All(String code);
+	public List<PoolEntity> getPoolAll(String code);
  }

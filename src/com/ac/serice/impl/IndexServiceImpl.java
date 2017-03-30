@@ -27,16 +27,16 @@ public class IndexServiceImpl extends CommonDaoImpl implements IndexService  {
 
 
 	@Override
-	public List<Menu1Entity> getMenu1All() {
-		List<Menu1Entity> findListBySql =findListBySql("select * from menu1", Menu1Entity.class);
+	public List<Menu1Entity> getMenu1All(String code) {
+		List<Menu1Entity> findListBySql =findListBySql("select * from menu1 where menu_code=?", Menu1Entity.class,code);
 		System.out.println(findListBySql);
 		return findListBySql;
 	}
 
 
 	@Override
-	public List<PoolEntity> getPoolAll() {
-		List<PoolEntity> findListBySql =findListBySql("select * from pool", PoolEntity.class);
+	public List<PoolEntity> getPoolAll(String code) {
+		List<PoolEntity> findListBySql =findListBySql("select * from pool where menu_code=?", PoolEntity.class);
 		System.out.println(findListBySql);
 		return findListBySql;
 	}
